@@ -15,6 +15,8 @@ import java.time.temporal.ChronoUnit;
 public class CarDTO {
     private Long id;
 
+    private String companyName;
+
     private LocalDateTime startRentDate;
 
     private LocalDateTime endRentDate;

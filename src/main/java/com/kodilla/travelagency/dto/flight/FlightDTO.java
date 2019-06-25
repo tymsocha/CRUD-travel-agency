@@ -15,6 +15,12 @@ import java.time.temporal.ChronoUnit;
 public class FlightDTO {
     private Long id;
 
+    private String airline;
+
+    private String origin;
+
+    private String destination;
+
     private FlightCabin flightCabin;
 
     private String meal;

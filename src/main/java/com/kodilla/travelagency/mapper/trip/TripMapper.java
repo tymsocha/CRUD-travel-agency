@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 @Component
 public class TripMapper {
-    /*public Trip mapTripDTOToTrip(TripDTO tripDTO) {
+    public Trip mapTripDTOToTrip(TripDTO tripDTO) {
         return Trip.builder()
                 .id(tripDTO.getId())
                 .carList(tripDTO.getCarList())
@@ -53,5 +53,5 @@ public class TripMapper {
                 .totalPrice(trip.getTotalPrice())
                 .build())
                 .collect(Collectors.toList());
-    }*/
+    }
 }

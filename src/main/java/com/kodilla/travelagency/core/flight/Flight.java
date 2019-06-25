@@ -7,7 +7,9 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 
 @AllArgsConstructor
@@ -20,6 +22,15 @@ public class Flight {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column(name = "airline")
+    private String airline;
+
+    @Column(name = "origin")
+    private String origin;
+
+    @Column(name = "destination")
+    private String destination;
+
     @Column(name = "cabin")
     private FlightCabin flightCabin;
 
@@ -29,10 +40,10 @@ public class Flight {
     @Column(name = "seat")
     private String seat;
 
-    @Column(name = "departure_date")
+    @Column(name = "dep_date")
     private LocalDateTime departureDate;
 
-    @Column(name = "arrival_date")
+    @Column(name = "arr_date")
     private LocalDateTime arrivalDate;
 
     @Column(name = "duration")
@@ -47,7 +58,7 @@ public class Flight {
     private String name;
 
     public Long getFlightDuration() {
-        return flightDuration = ChronoUnit.MINUTES.between(departureDate, arrivalDate);
+        return flightDuration = Duration.between(departureDate.toLocalTime(), arrivalDate.toLocalTime()).toHours();
     }
 
     public String getName() {

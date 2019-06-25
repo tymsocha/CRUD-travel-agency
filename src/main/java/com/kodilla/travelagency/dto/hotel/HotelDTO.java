@@ -15,6 +15,8 @@ import java.time.temporal.ChronoUnit;
 public class HotelDTO {
     private Long id;
 
+    private String hotelName;
+
     private RoomType roomType;
 
     private Boolean isBreakfast;

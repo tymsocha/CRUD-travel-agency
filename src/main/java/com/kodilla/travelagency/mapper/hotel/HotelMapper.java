@@ -12,6 +12,7 @@ public class HotelMapper {
     public Hotel mapHotelDTOToHotel(HotelDTO hotelDTO) {
         return Hotel.builder()
                 .id(hotelDTO.getId())
+                .hotelName(hotelDTO.getHotelName())
                 .checkIn(hotelDTO.getCheckIn())
                 .checkOut(hotelDTO.getCheckOut())
                 .isBreakfast(hotelDTO.getIsBreakfast())
@@ -25,6 +26,7 @@ public class HotelMapper {
     public HotelDTO mapHotelToHotelDTO(Hotel hotel) {
         return HotelDTO.builder()
                 .id(hotel.getId())
+                .hotelName(hotel.getHotelName())
                 .checkIn(hotel.getCheckIn())
                 .checkOut(hotel.getCheckOut())
                 .isBreakfast(hotel.getIsBreakfast())
@@ -38,6 +40,7 @@ public class HotelMapper {
     public List<Hotel> mapHotleDTOListToHotelList(List<HotelDTO> hotelDTOList) {
         return hotelDTOList.stream().map(hotelDTO -> Hotel.builder()
                     .id(hotelDTO.getId())
+                    .hotelName(hotelDTO.getHotelName())
                     .checkIn(hotelDTO.getCheckIn())
                     .checkOut(hotelDTO.getCheckOut())
                     .isBreakfast(hotelDTO.getIsBreakfast())
@@ -52,6 +55,7 @@ public class HotelMapper {
     public List<HotelDTO> mapHotleListToHotelDTOList(List<Hotel> hotelList) {
         return hotelList.stream().map(hotel -> HotelDTO.builder()
                 .id(hotel.getId())
+                .hotelName(hotel.getHotelName())
                 .checkIn(hotel.getCheckIn())
                 .checkOut(hotel.getCheckOut())
                 .isBreakfast(hotel.getIsBreakfast())

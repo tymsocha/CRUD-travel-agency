@@ -8,7 +8,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.ManyToAny;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -24,27 +23,42 @@ public class Trip {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-   /* @ManyToMany(
+    @Column(name = "trip_name")
+    private String tripName;
 
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "join_trips_with_hotels",
+            joinColumns = {@JoinColumn(name = "trip_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "hotel_id", referencedColumnName = "id")}
     )
     private List<Hotel> hotelList;
 
-    @ManyToMany(
-
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "join_trips_with_flights",
+            joinColumns = {@JoinColumn(name = "trip_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "flight_id", referencedColumnName = "id")}
     )
     private List<Flight> flightList;
 
-    @ManyToMany(
-
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "join_trips_with_hotels",
+            joinColumns = {@JoinColumn(name = "trip_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "car_id", referencedColumnName = "id")}
     )
     private List<Car> carList;
 
-    @ManyToMany(
-
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "join_trips_with_hotels",
+            joinColumns = {@JoinColumn(name = "trip_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "place_id", referencedColumnName = "id")}
     )
     private List<Place> placeList;
 
-    @Column(name = "totalPrice")
+    @Column(name = "total_price")
     private BigDecimal totalPrice;
 
     public BigDecimal setTotalPrice() {
@@ -53,5 +67,5 @@ public class Trip {
         BigDecimal hotelsPrice = hotelList.stream().map(Hotel::getTotalCostOfStay).reduce(BigDecimal.ZERO, BigDecimal::add);
         BigDecimal placesPrice = placeList.stream().map(Place::getCostToEnter).reduce(BigDecimal.ZERO, BigDecimal::add);
         return totalPrice = carsPrice.add(hotelsPrice).add(flightsPrice).add(placesPrice);
-    }*/
+    }
 }

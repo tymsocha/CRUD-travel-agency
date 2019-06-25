@@ -12,6 +12,7 @@ public class CarMapper {
     public CarDTO mapCarToCarDTO(Car car) {
         return CarDTO.builder()
                 .id(car.getId())
+                .companyName(car.getCompanyName())
                 .startRentDate(car.getStartRentDate())
                 .endRentDate(car.getEndRentDate())
                 .carType(car.getCarType())
@@ -24,6 +25,7 @@ public class CarMapper {
     public Car mapCarDTOToCar(CarDTO carDTO) {
         return Car.builder()
                 .id(carDTO.getId())
+                .companyName(carDTO.getCompanyName())
                 .startRentDate(carDTO.getStartRentDate())
                 .endRentDate(carDTO.getEndRentDate())
                 .carType(carDTO.getCarType())
@@ -36,6 +38,7 @@ public class CarMapper {
     public List<Car> mapCarDTOListToCarList(List<CarDTO> carDTOList) {
         return carDTOList.stream().map(carDTO -> Car.builder()
                     .id(carDTO.getId())
+                    .companyName(carDTO.getCompanyName())
                     .startRentDate(carDTO.getStartRentDate())
                     .endRentDate(carDTO.getEndRentDate())
                     .carType(carDTO.getCarType())
@@ -49,6 +52,7 @@ public class CarMapper {
     public List<CarDTO> mapCarListToCarDTOList(List<Car> carList) {
         return carList.stream().map(car -> CarDTO.builder()
                     .id(car.getId())
+                    .companyName(car.getCompanyName())
                     .startRentDate(car.getStartRentDate())
                     .endRentDate(car.getEndRentDate())
                     .carType(car.getCarType())

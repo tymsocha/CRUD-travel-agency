@@ -12,6 +12,9 @@ public class FlightMapper {
     public Flight mapFlightDTOtoFlight(FlightDTO flightDTO) {
         return Flight.builder()
                 .id(flightDTO.getId())
+                .airplaneModel(flightDTO.getAirline())
+                .origin(flightDTO.getOrigin())
+                .destination(flightDTO.getDestination())
                 .departureDate(flightDTO.getDepartureDate())
                 .arrivalDate(flightDTO.getArrivalDate())
                 .airplaneModel(flightDTO.getAirplaneModel())
@@ -26,6 +29,9 @@ public class FlightMapper {
     public FlightDTO mapFlighttoFlightDTO(Flight flight) {
         return FlightDTO.builder()
                 .id(flight.getId())
+                .origin(flight.getOrigin())
+                .destination(flight.getDestination())
+                .airline(flight.getAirline())
                 .departureDate(flight.getDepartureDate())
                 .arrivalDate(flight.getArrivalDate())
                 .airplaneModel(flight.getAirplaneModel())
@@ -40,6 +46,9 @@ public class FlightMapper {
     public List<Flight> mapFlightDTOListToFlightList(List<FlightDTO> flightDTOList) {
         return flightDTOList.stream().map(flightDTO -> Flight.builder()
                     .id(flightDTO.getId())
+                    .origin(flightDTO.getOrigin())
+                    .destination(flightDTO.getDestination())
+                    .airline(flightDTO.getAirline())
                     .departureDate(flightDTO.getDepartureDate())
                     .arrivalDate(flightDTO.getArrivalDate())
                     .airplaneModel(flightDTO.getAirplaneModel())
@@ -54,16 +63,19 @@ public class FlightMapper {
 
     public List<FlightDTO> mapFlightListToFlightDTOList(List<Flight> flightList) {
         return flightList.stream().map(flight -> FlightDTO.builder()
-                .id(flight.getId())
-                .departureDate(flight.getDepartureDate())
-                .arrivalDate(flight.getArrivalDate())
-                .airplaneModel(flight.getAirplaneModel())
-                .flightCabin(flight.getFlightCabin())
-                .flightDuration(flight.getFlightDuration())
-                .seat(flight.getSeat())
-                .meal(flight.getMeal())
-                .price(flight.getPrice())
-                .build())
+                    .id(flight.getId())
+                    .airline(flight.getAirline())
+                    .origin(flight.getOrigin())
+                    .destination(flight.getDestination())
+                    .departureDate(flight.getDepartureDate())
+                    .arrivalDate(flight.getArrivalDate())
+                    .airplaneModel(flight.getAirplaneModel())
+                    .flightCabin(flight.getFlightCabin())
+                    .flightDuration(flight.getFlightDuration())
+                    .seat(flight.getSeat())
+                    .meal(flight.getMeal())
+                    .price(flight.getPrice())
+                    .build())
                 .collect(Collectors.toList());
     }
 }

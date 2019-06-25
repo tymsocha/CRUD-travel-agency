@@ -20,6 +20,9 @@ public class Car {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column(name = "company")
+    private String companyName;
+
     @Column(name = "rent_start")
     private LocalDateTime startRentDate;
 

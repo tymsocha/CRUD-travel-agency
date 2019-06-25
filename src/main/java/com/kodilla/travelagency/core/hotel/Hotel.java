@@ -20,6 +20,9 @@ public class Hotel {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column(name = "hotel_name")
+    private String hotelName;
+
     @Column(name = "room_type")
     private RoomType roomType;
 
@@ -32,11 +35,11 @@ public class Hotel {
     @Column(name = "check_out")
     private LocalDateTime checkOut;
 
-    @Column(name = "night_cost")
-    private BigDecimal costPerNight;
-
     @Column(name = "days_of_the_stay")
     private BigDecimal numberOfDays;
+
+    @Column(name = "night_cost")
+    private BigDecimal costPerNight;
 
     @Column(name = "total_cost")
     private BigDecimal totalCostOfStay;

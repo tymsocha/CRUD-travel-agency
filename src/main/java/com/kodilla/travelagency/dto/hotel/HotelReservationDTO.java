@@ -12,7 +12,7 @@ import java.time.temporal.ChronoUnit;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class HotelDTO {
+public class HotelReservationDTO {
     private Long id;
 
     private String hotelName;

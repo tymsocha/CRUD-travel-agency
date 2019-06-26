@@ -12,8 +12,8 @@ public class TripMapper {
     public Trip mapTripDTOToTrip(TripDTO tripDTO) {
         return Trip.builder()
                 .id(tripDTO.getId())
-                .carList(tripDTO.getCarList())
-                .hotelList(tripDTO.getHotelList())
+                .carReservationList(tripDTO.getCarReservationList())
+                .hotelReservationList(tripDTO.getHotelReservationList())
                 .flightList(tripDTO.getFlightList())
                 .placeList(tripDTO.getPlaceList())
                 .totalPrice(tripDTO.getTotalPrice())
@@ -23,8 +23,8 @@ public class TripMapper {
     public TripDTO mapTripToTripDTO(Trip trip) {
         return TripDTO.builder()
                 .id(trip.getId())
-                .carList(trip.getCarList())
-                .hotelList(trip.getHotelList())
+                .carReservationList(trip.getCarReservationList())
+                .hotelReservationList(trip.getHotelReservationList())
                 .flightList(trip.getFlightList())
                 .placeList(trip.getPlaceList())
                 .totalPrice(trip.getTotalPrice())
@@ -34,8 +34,8 @@ public class TripMapper {
     public List<Trip> mapTripDTOListToTripList(List<TripDTO> tripDTOList) {
         return tripDTOList.stream().map(tripDTO -> Trip.builder()
                     .id(tripDTO.getId())
-                    .carList(tripDTO.getCarList())
-                    .hotelList(tripDTO.getHotelList())
+                    .carReservationList(tripDTO.getCarReservationList())
+                    .hotelReservationList(tripDTO.getHotelReservationList())
                     .flightList(tripDTO.getFlightList())
                     .placeList(tripDTO.getPlaceList())
                     .totalPrice(tripDTO.getTotalPrice())
@@ -46,8 +46,8 @@ public class TripMapper {
     public List<TripDTO> mapTripListToTripDTOList(List<Trip> tripList) {
         return tripList.stream().map(trip -> TripDTO.builder()
                 .id(trip.getId())
-                .carList(trip.getCarList())
-                .hotelList(trip.getHotelList())
+                .carReservationList(trip.getCarReservationList())
+                .hotelReservationList(trip.getHotelReservationList())
                 .flightList(trip.getFlightList())
                 .placeList(trip.getPlaceList())
                 .totalPrice(trip.getTotalPrice())

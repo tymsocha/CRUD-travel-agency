@@ -1,4 +1,4 @@
-package com.kodilla.travelagency.core.hotel;
+package com.kodilla.travelagency.core.car;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,6 +11,6 @@ import javax.persistence.Entity;
 @NoArgsConstructor
 @Builder
 @Getter
-@Entity(name = "hotels")
-public class Hotel {
+@Entity(name = "car_companies")
+public class CarCompany {
 }

@@ -1,8 +1,8 @@
 package com.kodilla.travelagency.core.trip;
 
-import com.kodilla.travelagency.core.car.Car;
+import com.kodilla.travelagency.core.car.CarReservation;
 import com.kodilla.travelagency.core.flight.Flight;
-import com.kodilla.travelagency.core.hotel.Hotel;
+import com.kodilla.travelagency.core.hotel.HotelReservation;
 import com.kodilla.travelagency.core.places.Place;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,7 +17,7 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 @Getter
-@Entity
+@Entity(name = "trip")
 public class Trip {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -32,7 +32,7 @@ public class Trip {
             joinColumns = {@JoinColumn(name = "trip_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "hotel_id", referencedColumnName = "id")}
     )
-    private List<Hotel> hotelList;
+    private List<HotelReservation> hotelReservationList;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
@@ -44,15 +44,15 @@ public class Trip {
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
-            name = "join_trips_with_hotels",
+            name = "join_trips_with_cars",
             joinColumns = {@JoinColumn(name = "trip_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "car_id", referencedColumnName = "id")}
     )
-    private List<Car> carList;
+    private List<CarReservation> carReservationList;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
-            name = "join_trips_with_hotels",
+            name = "join_trips_with_places",
             joinColumns = {@JoinColumn(name = "trip_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "place_id", referencedColumnName = "id")}
     )
@@ -62,9 +62,9 @@ public class Trip {
     private BigDecimal totalPrice;
 
     public BigDecimal setTotalPrice() {
-        BigDecimal carsPrice = carList.stream().map(Car::getPrice).reduce(BigDecimal.ZERO, BigDecimal::add);
+        BigDecimal carsPrice = carReservationList.stream().map(CarReservation::getPrice).reduce(BigDecimal.ZERO, BigDecimal::add);
         BigDecimal flightsPrice = flightList.stream().map(Flight::getPrice).reduce(BigDecimal.ZERO, BigDecimal::add);
-        BigDecimal hotelsPrice = hotelList.stream().map(Hotel::getTotalCostOfStay).reduce(BigDecimal.ZERO, BigDecimal::add);
+        BigDecimal hotelsPrice = hotelReservationList.stream().map(HotelReservation::getTotalCostOfStay).reduce(BigDecimal.ZERO, BigDecimal::add);
         BigDecimal placesPrice = placeList.stream().map(Place::getCostToEnter).reduce(BigDecimal.ZERO, BigDecimal::add);
         return totalPrice = carsPrice.add(hotelsPrice).add(flightsPrice).add(placesPrice);
     }

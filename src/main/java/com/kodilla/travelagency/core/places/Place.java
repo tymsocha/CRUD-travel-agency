@@ -12,7 +12,7 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @Builder
 @Getter
-@Entity
+@Entity(name = "places")
 public class Place {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

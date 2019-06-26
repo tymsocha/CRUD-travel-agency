@@ -12,7 +12,7 @@ import java.time.temporal.ChronoUnit;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class CarDTO {
+public class CarReservationDTO {
     private Long id;
 
     private String companyName;

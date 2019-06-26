@@ -14,8 +14,8 @@ import java.time.temporal.ChronoUnit;
 @NoArgsConstructor
 @Builder
 @Getter
-@Entity(name = "cars")
-public class Car {
+@Entity(name = "car_reservations")
+public class CarReservation {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -33,7 +33,7 @@ public class Car {
     private BigDecimal numberOfRentDays;
 
     @ManyToOne(fetch = FetchType.LAZY, targetEntity = CarType.class)
-    @JoinColumn(name = "car_type")
+    @JoinColumn(name = "car_type_id")
     private CarType carType;
 
     @Column(name = "daily_price")
@@ -53,6 +53,6 @@ public class Car {
     }
 
     public String getName() {
-        return name = "Car";
+        return name = "CarReservation";
     }
 }

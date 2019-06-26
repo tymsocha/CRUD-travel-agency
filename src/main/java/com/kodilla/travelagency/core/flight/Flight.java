@@ -1,5 +1,6 @@
 package com.kodilla.travelagency.core.flight;
 
+import com.kodilla.travelagency.core.trip.Trip;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -11,6 +12,7 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -54,6 +56,9 @@ public class Flight {
 
     @Column(name = "price")
     private BigDecimal price;
+
+    @ManyToMany(mappedBy = "flightList")
+    private List<Trip> tripList;
 
     private String name;
 

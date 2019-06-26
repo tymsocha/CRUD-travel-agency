@@ -1,12 +1,11 @@
 package com.kodilla.travelagency.dto.trip;
 
-import com.kodilla.travelagency.core.car.Car;
+import com.kodilla.travelagency.core.car.CarReservation;
 import com.kodilla.travelagency.core.flight.Flight;
-import com.kodilla.travelagency.core.hotel.Hotel;
+import com.kodilla.travelagency.core.hotel.HotelReservation;
 import com.kodilla.travelagency.core.places.Place;
 import lombok.*;
 
-import javax.persistence.Column;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -18,11 +17,11 @@ import java.util.List;
 public class TripDTO {
     private Long id;
 
-    private List<Hotel> hotelList;
+    private List<HotelReservation> hotelReservationList;
 
     private List<Flight> flightList;
 
-    private List<Car> carList;
+    private List<CarReservation> carReservationList;
 
     private List<Place> placeList;
 

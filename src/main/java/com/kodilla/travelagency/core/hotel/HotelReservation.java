@@ -1,5 +1,6 @@
 package com.kodilla.travelagency.core.hotel;
 
+import com.kodilla.travelagency.core.trip.Trip;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -19,9 +20,6 @@ public class HotelReservation {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
-    @Column(name = "hotel_name")
-    private String hotelName;
 
     @Column(name = "room_type")
     private RoomType roomType;
@@ -44,7 +42,13 @@ public class HotelReservation {
     @Column(name = "total_cost")
     private BigDecimal totalCostOfStay;
 
-    private String name;
+    @ManyToOne(fetch = FetchType.LAZY, targetEntity = Hotel.class)
+    @JoinColumn(name = "hotel_id")
+    private Hotel hotel;
+
+    @ManyToOne(fetch = FetchType.LAZY, targetEntity = Trip.class)
+    @JoinColumn(name = "trip_id")
+    private Trip trip;
 
     public BigDecimal getNumberOfDays() {
         return numberOfDays = new BigDecimal(ChronoUnit.DAYS.between(checkIn, checkOut));
@@ -52,9 +56,5 @@ public class HotelReservation {
 
     public BigDecimal getTotalCostOfStay() {
         return totalCostOfStay = costPerNight.multiply(numberOfDays);
-    }
-
-    public String getName() {
-        return name = "HotelReservation";
     }
 }

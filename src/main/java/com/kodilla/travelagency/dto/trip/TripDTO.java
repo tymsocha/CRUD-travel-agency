@@ -6,6 +6,7 @@ import com.kodilla.travelagency.core.hotel.HotelReservation;
 import com.kodilla.travelagency.core.places.Place;
 import lombok.*;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -17,11 +18,7 @@ import java.util.List;
 public class TripDTO {
     private Long id;
 
-    private List<HotelReservation> hotelReservationList;
-
-    private List<Flight> flightList;
-
-    private List<CarReservation> carReservationList;
+    private String tripName;
 
     private List<Place> placeList;
 

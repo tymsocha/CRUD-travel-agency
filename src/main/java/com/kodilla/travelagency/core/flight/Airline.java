@@ -1,4 +1,4 @@
-package com.kodilla.travelagency.core.hotel;
+package com.kodilla.travelagency.core.flight;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,14 +11,14 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Builder
 @Getter
-@Entity(name = "hotels")
-public class Hotel {
+@Entity(name = "airlines")
+public class Airline {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "hotel_name")
-    private String hotelName;
+    @Column(name = "airline_name")
+    private String name;
 
     @Column(name = "address")
     private String address;

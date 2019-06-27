@@ -1,5 +1,6 @@
 package com.kodilla.travelagency.core.car;
 
+import com.kodilla.travelagency.core.trip.Trip;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -20,9 +21,6 @@ public class CarReservation {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "company")
-    private String companyName;
-
     @Column(name = "rent_start")
     private LocalDateTime startRentDate;
 
@@ -32,17 +30,23 @@ public class CarReservation {
     @Column(name = "days_of_rent")
     private BigDecimal numberOfRentDays;
 
-    @ManyToOne(fetch = FetchType.LAZY, targetEntity = CarType.class)
-    @JoinColumn(name = "car_type_id")
-    private CarType carType;
-
     @Column(name = "daily_price")
     private BigDecimal pricePerDay;
 
     @Column(name = "total_price")
     private BigDecimal price;
 
-    private String name;
+    @ManyToOne(fetch = FetchType.LAZY, targetEntity = CarType.class)
+    @JoinColumn(name = "car_type_id")
+    private CarType carType;
+
+    @ManyToOne(fetch = FetchType.LAZY, targetEntity = CarCompany.class)
+    @JoinColumn(name = "company_id")
+    private CarCompany carCompany;
+
+    @ManyToOne(fetch = FetchType.LAZY, targetEntity = Trip.class)
+    @JoinColumn(name = "trip_id")
+    private Trip trip;
 
     public BigDecimal getNumberOfRentDays() {
         return numberOfRentDays = new BigDecimal(ChronoUnit.DAYS.between(startRentDate, endRentDate));
@@ -50,9 +54,5 @@ public class CarReservation {
 
     public BigDecimal getPrice() {
         return price = pricePerDay.multiply(numberOfRentDays);
-    }
-
-    public String getName() {
-        return name = "CarReservation";
     }
 }

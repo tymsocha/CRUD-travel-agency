@@ -18,11 +18,8 @@ public class FlightMapper {
                 .departureDate(flightDTO.getDepartureDate())
                 .arrivalDate(flightDTO.getArrivalDate())
                 .airplaneModel(flightDTO.getAirplaneModel())
-                .flightCabin(flightDTO.getFlightCabin())
                 .flightDuration(flightDTO.getFlightDuration())
-                .seat(flightDTO.getSeat())
-                .meal(flightDTO.getMeal())
-                .price(flightDTO.getPrice())
+                .ticketList(flightDTO.getTicketList())
                 .build();
     }
 
@@ -35,11 +32,8 @@ public class FlightMapper {
                 .departureDate(flight.getDepartureDate())
                 .arrivalDate(flight.getArrivalDate())
                 .airplaneModel(flight.getAirplaneModel())
-                .flightCabin(flight.getFlightCabin())
                 .flightDuration(flight.getFlightDuration())
-                .seat(flight.getSeat())
-                .meal(flight.getMeal())
-                .price(flight.getPrice())
+                .ticketList(flight.getTicketList())
                 .build();
     }
 
@@ -52,11 +46,8 @@ public class FlightMapper {
                     .departureDate(flightDTO.getDepartureDate())
                     .arrivalDate(flightDTO.getArrivalDate())
                     .airplaneModel(flightDTO.getAirplaneModel())
-                    .flightCabin(flightDTO.getFlightCabin())
                     .flightDuration(flightDTO.getFlightDuration())
-                    .seat(flightDTO.getSeat())
-                    .meal(flightDTO.getMeal())
-                    .price(flightDTO.getPrice())
+                    .ticketList(flightDTO.getTicketList())
                     .build())
                 .collect(Collectors.toList());
     }
@@ -70,11 +61,8 @@ public class FlightMapper {
                     .departureDate(flight.getDepartureDate())
                     .arrivalDate(flight.getArrivalDate())
                     .airplaneModel(flight.getAirplaneModel())
-                    .flightCabin(flight.getFlightCabin())
                     .flightDuration(flight.getFlightDuration())
-                    .seat(flight.getSeat())
-                    .meal(flight.getMeal())
-                    .price(flight.getPrice())
+                    .ticketList(flight.getTicketList())
                     .build())
                 .collect(Collectors.toList());
     }

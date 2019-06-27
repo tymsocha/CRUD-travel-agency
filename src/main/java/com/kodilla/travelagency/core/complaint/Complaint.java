@@ -7,7 +7,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,10 +18,6 @@ public class Complaint {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "trip_id")
-    private Trip trip;
-
     @Column(name = "title")
     private String complaintTitle;
 
@@ -31,4 +26,8 @@ public class Complaint {
 
     @Column(name = "is_resolved")
     private Boolean isResolved;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "trip_id")
+    private Trip trip;
 }

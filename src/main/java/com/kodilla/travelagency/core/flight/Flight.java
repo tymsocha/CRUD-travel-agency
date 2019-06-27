@@ -1,17 +1,14 @@
 package com.kodilla.travelagency.core.flight;
 
-import com.kodilla.travelagency.core.trip.Trip;
+import com.kodilla.travelagency.core.hotel.HotelReservation;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
 import java.time.Duration;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 @AllArgsConstructor
@@ -33,15 +30,6 @@ public class Flight {
     @Column(name = "destination")
     private String destination;
 
-    @Column(name = "cabin")
-    private FlightCabin flightCabin;
-
-    @Column(name = "meal")
-    private String meal;
-
-    @Column(name = "seat")
-    private String seat;
-
     @Column(name = "dep_date")
     private LocalDateTime departureDate;
 
@@ -54,19 +42,15 @@ public class Flight {
     @Column(name = "plane")
     private String airplaneModel;
 
-    @Column(name = "price")
-    private BigDecimal price;
-
-    @ManyToMany(mappedBy = "flightList")
-    private List<Trip> tripList;
-
-    private String name;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "join_tickets_with_flights",
+            joinColumns = {@JoinColumn(name = "flight_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "ticket_id", referencedColumnName = "id")}
+    )
+    private List<Ticket> ticketList;
 
     public Long getFlightDuration() {
         return flightDuration = Duration.between(departureDate.toLocalTime(), arrivalDate.toLocalTime()).toHours();
-    }
-
-    public String getName() {
-        return name = "Flight";
     }
 }

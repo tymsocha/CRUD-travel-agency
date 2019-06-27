@@ -1,15 +1,15 @@
 package com.kodilla.travelagency.core.car;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
+@Setter
+@Builder
 @Getter
-@Entity(name = "carTypes")
+@Entity(name = "car_types")
 public class CarType {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

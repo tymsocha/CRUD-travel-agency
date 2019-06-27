@@ -15,6 +15,7 @@ public class ComplaintMapper {
                 .complaintTitle(complaintDTO.getComplaintTitle())
                 .complaintContent(complaintDTO.getComplaintContent())
                 .isResolved(complaintDTO.getIsResolved())
+                .trip(complaintDTO.getTrip())
                 .build();
     }
 
@@ -24,6 +25,7 @@ public class ComplaintMapper {
                 .complaintTitle(complaint.getComplaintTitle())
                 .complaintContent(complaint.getComplaintContent())
                 .isResolved(complaint.getIsResolved())
+                .trip(complaint.getTrip())
                 .build();
     }
 
@@ -33,17 +35,19 @@ public class ComplaintMapper {
                     .complaintTitle(complaintDTO.getComplaintTitle())
                     .complaintContent(complaintDTO.getComplaintContent())
                     .isResolved(complaintDTO.getIsResolved())
+                    .trip(complaintDTO.getTrip())
                     .build())
                 .collect(Collectors.toList());
     }
 
     public List<ComplaintDTO> mapComplaintListToComplaintDTOList(List<Complaint> complaintList) {
         return complaintList.stream().map(complaint -> ComplaintDTO.builder()
-                .id(complaint.getId())
-                .complaintTitle(complaint.getComplaintTitle())
-                .complaintContent(complaint.getComplaintContent())
-                .isResolved(complaint.getIsResolved())
-                .build())
+                    .id(complaint.getId())
+                    .complaintTitle(complaint.getComplaintTitle())
+                    .complaintContent(complaint.getComplaintContent())
+                    .isResolved(complaint.getIsResolved())
+                    .trip(complaint.getTrip())
+                    .build())
                 .collect(Collectors.toList());
     }
 }

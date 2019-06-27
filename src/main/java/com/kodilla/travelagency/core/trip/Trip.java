@@ -17,7 +17,7 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 @Getter
-@Entity(name = "trip")
+@Entity(name = "trips")
 public class Trip {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -25,30 +25,6 @@ public class Trip {
 
     @Column(name = "trip_name")
     private String tripName;
-
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(
-            name = "join_trips_with_hotels",
-            joinColumns = {@JoinColumn(name = "trip_id", referencedColumnName = "id")},
-            inverseJoinColumns = {@JoinColumn(name = "hotel_id", referencedColumnName = "id")}
-    )
-    private List<HotelReservation> hotelReservationList;
-
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(
-            name = "join_trips_with_flights",
-            joinColumns = {@JoinColumn(name = "trip_id", referencedColumnName = "id")},
-            inverseJoinColumns = {@JoinColumn(name = "flight_id", referencedColumnName = "id")}
-    )
-    private List<Flight> flightList;
-
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(
-            name = "join_trips_with_cars",
-            joinColumns = {@JoinColumn(name = "trip_id", referencedColumnName = "id")},
-            inverseJoinColumns = {@JoinColumn(name = "car_id", referencedColumnName = "id")}
-    )
-    private List<CarReservation> carReservationList;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
@@ -60,12 +36,4 @@ public class Trip {
 
     @Column(name = "total_price")
     private BigDecimal totalPrice;
-
-    public BigDecimal setTotalPrice() {
-        BigDecimal carsPrice = carReservationList.stream().map(CarReservation::getPrice).reduce(BigDecimal.ZERO, BigDecimal::add);
-        BigDecimal flightsPrice = flightList.stream().map(Flight::getPrice).reduce(BigDecimal.ZERO, BigDecimal::add);
-        BigDecimal hotelsPrice = hotelReservationList.stream().map(HotelReservation::getTotalCostOfStay).reduce(BigDecimal.ZERO, BigDecimal::add);
-        BigDecimal placesPrice = placeList.stream().map(Place::getCostToEnter).reduce(BigDecimal.ZERO, BigDecimal::add);
-        return totalPrice = carsPrice.add(hotelsPrice).add(flightsPrice).add(placesPrice);
-    }
 }

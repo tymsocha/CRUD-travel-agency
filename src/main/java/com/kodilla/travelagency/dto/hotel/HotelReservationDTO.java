@@ -1,11 +1,12 @@
 package com.kodilla.travelagency.dto.hotel;
 
+import com.kodilla.travelagency.core.hotel.Hotel;
 import com.kodilla.travelagency.core.hotel.RoomType;
+import com.kodilla.travelagency.core.trip.Trip;
 import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.time.temporal.ChronoUnit;
 
 @Getter
 @Setter
@@ -15,7 +16,7 @@ import java.time.temporal.ChronoUnit;
 public class HotelReservationDTO {
     private Long id;
 
-    private String hotelName;
+    private Hotel hotel;
 
     private RoomType roomType;
 
@@ -25,17 +26,11 @@ public class HotelReservationDTO {
 
     private LocalDateTime checkOut;
 
-    private BigDecimal costPerNight;
-
     private BigDecimal numberOfDays;
+
+    private BigDecimal costPerNight;
 
     private BigDecimal totalCostOfStay;
 
-    public BigDecimal getNumberOfDays() {
-        return numberOfDays = new BigDecimal(ChronoUnit.DAYS.between(checkIn, checkOut));
-    }
-
-    public BigDecimal getTotalCostOfStay() {
-        return totalCostOfStay = costPerNight.multiply(numberOfDays);
-    }
+    private Trip trip;
 }

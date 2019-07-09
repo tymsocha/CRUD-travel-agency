@@ -1,7 +1,7 @@
 package com.kodilla.travelagency.mapper.trip;
 
 import com.kodilla.travelagency.core.trip.Trip;
-import com.kodilla.travelagency.dto.trip.TripDTO;
+import com.kodilla.travelagency.api.trip.TripDTO;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

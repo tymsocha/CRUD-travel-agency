@@ -1,4 +1,4 @@
-package com.kodilla.travelagency.dto.places;
+package com.kodilla.travelagency.api.places;
 
 import lombok.*;
 

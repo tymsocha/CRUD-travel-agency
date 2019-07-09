@@ -1,7 +1,7 @@
 package com.kodilla.travelagency.mapper.complaint;
 
 import com.kodilla.travelagency.core.complaint.Complaint;
-import com.kodilla.travelagency.dto.complaint.ComplaintDTO;
+import com.kodilla.travelagency.api.complaint.ComplaintDTO;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

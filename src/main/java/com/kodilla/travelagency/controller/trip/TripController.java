@@ -1,14 +1,24 @@
 package com.kodilla.travelagency.controller.trip;
 
 
-import org.springframework.stereotype.Controller;
+import com.kodilla.travelagency.api.trip.TripDTO;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @CrossOrigin(origins = "*")
-@Controller
+@RestController
 @Transactional
-@RequestMapping("v1/travel/trips")
+@RequestMapping("/v1/travel/trips")
 public class TripController {
+
+    @GetMapping(value = "getTrips")
+    public List<TripDTO> getTrips() {
+        return new ArrayList<>();
+    }
 }

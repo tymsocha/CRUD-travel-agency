@@ -1,4 +1,4 @@
-package com.kodilla.travelagency.dto.hotel;
+package com.kodilla.travelagency.api.hotel;
 
 import com.kodilla.travelagency.core.hotel.Hotel;
 import com.kodilla.travelagency.core.hotel.RoomType;

@@ -1,4 +1,4 @@
-package com.kodilla.travelagency.dto.flight;
+package com.kodilla.travelagency.api.flight;
 
 import com.kodilla.travelagency.core.flight.FlightCabin;
 import com.kodilla.travelagency.core.trip.Trip;

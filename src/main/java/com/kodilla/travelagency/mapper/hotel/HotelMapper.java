@@ -1,7 +1,7 @@
 package com.kodilla.travelagency.mapper.hotel;
 
 import com.kodilla.travelagency.core.hotel.Hotel;
-import com.kodilla.travelagency.dto.hotel.HotelDTO;
+import com.kodilla.travelagency.api.hotel.HotelDTO;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

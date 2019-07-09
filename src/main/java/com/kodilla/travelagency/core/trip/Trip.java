@@ -2,12 +2,15 @@ package com.kodilla.travelagency.core.trip;
 
 import com.kodilla.travelagency.core.car.CarReservation;
 import com.kodilla.travelagency.core.flight.Flight;
+import com.kodilla.travelagency.core.flight.Ticket;
 import com.kodilla.travelagency.core.hotel.HotelReservation;
 import com.kodilla.travelagency.core.places.Place;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -25,6 +28,18 @@ public class Trip {
 
     @Column(name = "trip_name")
     private String tripName;
+
+    @OneToMany(mappedBy = "trip")
+    @LazyCollection(LazyCollectionOption.TRUE)
+    private List<Ticket> tickets;
+
+    @OneToMany(mappedBy = "trip")
+    @LazyCollection(LazyCollectionOption.TRUE)
+    private List<CarReservation> carReservations;
+
+    @OneToMany(mappedBy = "trip")
+    @LazyCollection(LazyCollectionOption.TRUE)
+    private List<HotelReservation> hotelReservations;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(

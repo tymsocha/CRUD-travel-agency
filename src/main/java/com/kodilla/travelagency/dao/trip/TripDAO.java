@@ -17,6 +17,8 @@ public interface TripDAO extends CrudRepository<Trip, Long> {
 
     Optional<Trip> deleteTaskById(Long id);
 
+    Optional<Trip> findByTripName(String tripName);
+
     @Override
     void deleteAll();
 

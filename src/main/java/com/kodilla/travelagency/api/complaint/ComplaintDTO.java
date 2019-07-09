@@ -1,4 +1,4 @@
-package com.kodilla.travelagency.dto.complaint;
+package com.kodilla.travelagency.api.complaint;
 
 import com.kodilla.travelagency.core.trip.Trip;
 import lombok.*;

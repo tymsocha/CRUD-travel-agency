@@ -1,7 +1,7 @@
 package com.kodilla.travelagency.mapper.car;
 
 import com.kodilla.travelagency.core.car.CarType;
-import com.kodilla.travelagency.dto.car.CarTypeDTO;
+import com.kodilla.travelagency.api.car.CarTypeDTO;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

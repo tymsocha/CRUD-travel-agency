@@ -1,7 +1,7 @@
 package com.kodilla.travelagency.mapper.places;
 
 import com.kodilla.travelagency.core.places.Place;
-import com.kodilla.travelagency.dto.places.PlaceDTO;
+import com.kodilla.travelagency.api.places.PlaceDTO;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

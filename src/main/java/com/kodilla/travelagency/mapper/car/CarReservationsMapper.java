@@ -1,7 +1,7 @@
 package com.kodilla.travelagency.mapper.car;
 
 import com.kodilla.travelagency.core.car.CarReservation;
-import com.kodilla.travelagency.dto.car.CarReservationDTO;
+import com.kodilla.travelagency.api.car.CarReservationDTO;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

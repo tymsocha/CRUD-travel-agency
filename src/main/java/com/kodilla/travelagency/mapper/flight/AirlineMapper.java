@@ -1,7 +1,7 @@
 package com.kodilla.travelagency.mapper.flight;
 
 import com.kodilla.travelagency.core.flight.Airline;
-import com.kodilla.travelagency.dto.flight.AirlineDTO;
+import com.kodilla.travelagency.api.flight.AirlineDTO;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

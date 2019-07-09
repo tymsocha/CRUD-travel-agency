@@ -1,12 +1,8 @@
-package com.kodilla.travelagency.dto.trip;
+package com.kodilla.travelagency.api.trip;
 
-import com.kodilla.travelagency.core.car.CarReservation;
-import com.kodilla.travelagency.core.flight.Flight;
-import com.kodilla.travelagency.core.hotel.HotelReservation;
 import com.kodilla.travelagency.core.places.Place;
 import lombok.*;
 
-import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.List;
 

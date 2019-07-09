@@ -1,4 +1,4 @@
-package com.kodilla.travelagency.dto.flight;
+package com.kodilla.travelagency.api.car;
 
 import lombok.*;
 
@@ -7,10 +7,10 @@ import lombok.*;
 @Builder
 @Getter
 @Setter
-public class AirlineDTO {
+public class CarCompanyDTO {
     private Long id;
 
-    private String name;
+    private String carCompanyName;
 
     private String address;
 

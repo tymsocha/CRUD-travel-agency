@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -44,4 +45,7 @@ public class Ticket {
     @ManyToOne(fetch = FetchType.LAZY, targetEntity = Airline.class)
     @JoinColumn(name = "airline_id")
     private Airline airline;
+
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "ticketList")
+    private List<Flight> flights;
 }

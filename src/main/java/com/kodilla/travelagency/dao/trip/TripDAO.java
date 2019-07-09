@@ -15,7 +15,7 @@ public interface TripDAO extends CrudRepository<Trip, Long> {
 
     Optional<Trip> findById(Long id);
 
-    Optional<Trip> deleteTaskById(Long id);
+    Optional<Trip> deleteTripById(Long id);
 
     Optional<Trip> findByTripName(String tripName);
 

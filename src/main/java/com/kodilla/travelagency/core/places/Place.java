@@ -18,6 +18,9 @@ public class Place {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column(name = "name")
+    private String placeName;
+    
     @Column(name = "country")
     private String country;
 

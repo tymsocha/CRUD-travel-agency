@@ -13,6 +13,7 @@ import com.kodilla.travelagency.mapper.flight.TicketMapper;
 import com.kodilla.travelagency.mapper.hotel.HotelReservationMapper;
 import com.kodilla.travelagency.mapper.trip.TripMapper;
 import com.kodilla.travelagency.service.trip.TripService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,6 +23,7 @@ import java.util.List;
 
 import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
 
+@Api(tags = "Trips")
 @CrossOrigin(origins = "*")
 @RestController
 @Transactional

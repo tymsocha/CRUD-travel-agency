@@ -15,11 +15,13 @@ public interface HotelDAO extends CrudRepository<Hotel, Long> {
 
     Optional<Hotel> findById(Long id);
 
-    Optional<Hotel> deleteTaskById(Long id);
+    Optional<Hotel> deleteHotelById(Long id);
 
     @Override
     void deleteAll();
 
     @Override
     long count();
+
+    Optional<Hotel> findByAddressOrHotelNameOrPhoneNumber(String address, String name, String phone);
 }

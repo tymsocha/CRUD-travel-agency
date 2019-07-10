@@ -26,17 +26,17 @@ public interface PlaceDAO extends CrudRepository<Place, Long> {
 
     Optional<Place> findByPlaceName(String placeName);
 
-    List<Place> findByCountry(String country);
+    List<Place> findAllByCountry(String country);
 
-    List<Place> findByNearestCity(String nearestCity);
+    List<Place> findAllByNearestCity(String nearestCity);
 
-    List<Place> findByNearestCityAndDistanceFromNearestCity(String nearestCity, Double distance);
+    List<Place> findAllByNearestCityAndDistanceFromNearestCity(String nearestCity, Double distance);
 
-    List<Place> findByCostToEnter(BigDecimal cost);
+    List<Place> findAllByCostToEnter(BigDecimal cost);
 
-    List<Place> findByIsMonument(Boolean isMonument);
+    List<Place> findAllByIsMonument(Boolean isMonument);
 
-    List<Place> findByCountryAndIsMonumentAndCostToEnterAndNearestCityAndDistanceFromNearestCity(
+    List<Place> findAllByCountryAndIsMonumentAndCostToEnterAndNearestCityAndDistanceFromNearestCity (
             String country, String nearestCity, Double distance, BigDecimal cost, Boolean isMonument
     );
 }

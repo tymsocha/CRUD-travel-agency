@@ -21,6 +21,9 @@ public class HotelReservation {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column(name = "guest")
+    private String guestName;
+
     @Column(name = "room_type")
     private RoomType roomType;
 

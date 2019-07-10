@@ -36,27 +36,27 @@ public class PlacesService {
     }
 
     public List<Place> findPlacesByCountry(String country) {
-        return placeDAO.findByCountry(country);
+        return placeDAO.findAllByCountry(country);
     }
 
     public List<Place> findPlacesByNearestCity(String nearestCity) {
-        return placeDAO.findByNearestCity(nearestCity);
+        return placeDAO.findAllByNearestCity(nearestCity);
     }
 
     public List<Place> findPlacesByNearestCityAnddistance(String city, Double distance) {
-        return placeDAO.findByNearestCityAndDistanceFromNearestCity(city, distance);
+        return placeDAO.findAllByNearestCityAndDistanceFromNearestCity(city, distance);
     }
 
     public List<Place> findPlacesByCost(BigDecimal cost) {
-        return placeDAO.findByCostToEnter(cost);
+        return placeDAO.findAllByCostToEnter(cost);
     }
 
     public List<Place> findPlacesByIsMonument(Boolean isMonument) {
-        return placeDAO.findByIsMonument(isMonument);
+        return placeDAO.findAllByIsMonument(isMonument);
     }
 
     public List<Place> findPlaceUsingAllParameters(PlaceDTO placeDTO) {
-        return placeDAO.findByCountryAndIsMonumentAndCostToEnterAndNearestCityAndDistanceFromNearestCity(
+        return placeDAO.findAllByCountryAndIsMonumentAndCostToEnterAndNearestCityAndDistanceFromNearestCity(
                 placeDTO.getCountry(),
                 placeDTO.getNearestCity(),
                 placeDTO.getDistanceFromNearestCity(),

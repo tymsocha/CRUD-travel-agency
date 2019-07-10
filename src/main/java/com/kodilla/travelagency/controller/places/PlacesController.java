@@ -27,55 +27,55 @@ public class PlacesController {
     private PlacesService placesService;
 
     @ApiOperation(value = "Get All Places")
-    @GetMapping(value = "getPlaces")
+    @GetMapping(value = "getAll")
     public List<PlaceDTO> getPlaces() {
         return placeMapper.mapPlaceListToPlaceDTOList(placesService.getAllPlaces());
     }
 
     @ApiOperation(value = "Get Place")
-    @GetMapping(value = "getPlace/{placeId}")
+    @GetMapping(value = "get/{placeId}")
     public PlaceDTO getPlace(@PathVariable Long placeId) throws PlaceNotFoundException {
         return placeMapper.mapPlaceToPlaceDTO(placesService.findPlaceById(placeId));
     }
 
     @ApiOperation(value = "Get Place By Name")
-    @GetMapping(value = "getPlace/{placeName}")
+    @GetMapping(value = "get/{placeName}")
     public PlaceDTO getPlaceByName(@PathVariable String placeName) throws PlaceNotFoundException {
         return placeMapper.mapPlaceToPlaceDTO(placesService.findPlaceByPlaceName(placeName));
     }
 
     @ApiOperation(value = "Save Place")
-    @PostMapping(value = "savePlace", consumes = APPLICATION_JSON_VALUE)
+    @PostMapping(value = "save", consumes = APPLICATION_JSON_VALUE)
     public PlaceDTO savePlace(@RequestBody PlaceDTO placeDTO) {
         return placeMapper.mapPlaceToPlaceDTO(placesService.savePlace(placeMapper.mapPlaceDTOToPlace(placeDTO)));
     }
 
     @ApiOperation(value = "Update Place")
-    @PutMapping(value = "updatePlace", consumes = APPLICATION_JSON_VALUE)
+    @PutMapping(value = "update", consumes = APPLICATION_JSON_VALUE)
     public PlaceDTO updatePlace(@RequestBody PlaceDTO placeDTO) {
         return placeMapper.mapPlaceToPlaceDTO(placesService.savePlace(placeMapper.mapPlaceDTOToPlace(placeDTO)));
     }
 
     @ApiOperation(value = "Delete Place")
-    @DeleteMapping(value = "deletePlace/{placeId}")
+    @DeleteMapping(value = "delete/{placeId}")
     public void deletePlace(@PathVariable Long placeId) throws PlaceNotFoundException {
         placesService.deletePlace(placeId);
     }
 
     @ApiOperation(value = "Get Places By Country")
-    @GetMapping(value = "getPlaces/country")
+    @GetMapping(value = "get/country")
     public List<PlaceDTO> getPlacesByCountry(@RequestBody PlaceDTO placeDTO) {
         return placeMapper.mapPlaceListToPlaceDTOList(placesService.findPlacesByCountry(placeDTO.getCountry()));
     }
 
     @ApiOperation(value = "Get Places By City")
-    @GetMapping(value = "getPlaces/city")
+    @GetMapping(value = "get/city")
     public List<PlaceDTO> getPlacesByNearestCity(@RequestBody PlaceDTO placeDTO) {
         return placeMapper.mapPlaceListToPlaceDTOList(placesService.findPlacesByNearestCity(placeDTO.getNearestCity()));
     }
 
     @ApiOperation(value = "Get Places By City And Distance")
-    @GetMapping(value = "getPlaces/cityAndDistance")
+    @GetMapping(value = "get/cityAndDistance")
     public List<PlaceDTO> getPlacesByNearestCityAndDistance(@RequestBody PlaceDTO placeDTO) {
         return placeMapper.mapPlaceListToPlaceDTOList(
                 placesService.findPlacesByNearestCityAnddistance(
@@ -85,19 +85,19 @@ public class PlacesController {
     }
 
     @ApiOperation(value = "Get Places By Cost")
-    @GetMapping(value = "getPlaces/cost")
+    @GetMapping(value = "get/cost")
     public List<PlaceDTO> getPlacesByCost(@RequestBody PlaceDTO placeDTO) {
         return placeMapper.mapPlaceListToPlaceDTOList(placesService.findPlacesByCost(placeDTO.getCostToEnter()));
     }
 
     @ApiOperation(value = "Get Places By Monument Status")
-    @GetMapping(value = "getPlaces/monument")
+    @GetMapping(value = "get/monument")
     public List<PlaceDTO> getPlacesByMonumentStatus(@RequestBody PlaceDTO placeDTO) {
         return placeMapper.mapPlaceListToPlaceDTOList(placesService.findPlacesByIsMonument(placeDTO.getIsMonument()));
     }
 
     @ApiOperation(value = "Get Places Using All Parameters")
-    @GetMapping(value = "getPlaces/params")
+    @GetMapping(value = "get/params")
     public List<PlaceDTO> getPlacesUsingAllParams(@RequestBody PlaceDTO placeDTO) {
         return placeMapper.mapPlaceListToPlaceDTOList(placesService.findPlaceUsingAllParameters(placeDTO));
     }

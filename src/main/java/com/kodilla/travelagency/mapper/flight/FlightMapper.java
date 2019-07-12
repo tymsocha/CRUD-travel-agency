@@ -12,7 +12,7 @@ public class FlightMapper {
     public Flight mapFlightDTOtoFlight(FlightDTO flightDTO) {
         return Flight.builder()
                 .id(flightDTO.getId())
-                .airplaneModel(flightDTO.getAirline())
+                .airplaneModel(flightDTO.getAirplaneModel())
                 .origin(flightDTO.getOrigin())
                 .destination(flightDTO.getDestination())
                 .departureDate(flightDTO.getDepartureDate())

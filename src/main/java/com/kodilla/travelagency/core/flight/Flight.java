@@ -21,8 +21,9 @@ public class Flight {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "airline")
-    private String airline;
+    @ManyToOne
+    @JoinColumn(name = "airlineId")
+    private Airline airline;
 
     @Column(name = "origin")
     private String origin;

@@ -23,7 +23,7 @@ public class PlacesService {
         return placeDAO.findByPlaceName(placeName).orElseThrow(PlaceNotFoundException::new);
     }
 
-    public Place savePlace(Place place) {
+    public Place saveOrUpdatePlace(Place place) {
         return placeDAO.save(place);
     }
 

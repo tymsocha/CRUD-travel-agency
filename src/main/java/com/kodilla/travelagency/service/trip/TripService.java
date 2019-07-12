@@ -27,7 +27,7 @@ public class TripService {
         return tripDAO.findByTripName(tripName).orElseThrow(TripNotFoundException::new);
     }
 
-    public Trip saveTrip(Trip trip) {
+    public Trip saveOrUpdateTrip(Trip trip) {
         return tripDAO.save(trip);
     }
 

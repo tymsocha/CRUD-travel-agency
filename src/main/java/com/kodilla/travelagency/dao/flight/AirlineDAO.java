@@ -15,11 +15,13 @@ public interface AirlineDAO extends CrudRepository<Airline, Long> {
 
     Optional<Airline> findById(Long id);
 
-    Optional<Airline> deleteTaskById(Long id);
+    Optional<Airline> deleteAirlineById(Long id);
 
     @Override
     void deleteAll();
 
     @Override
     long count();
+
+    Optional<Airline> findByAddressOrNameOrPhoneNumber(String address, String name, String phone);
 }

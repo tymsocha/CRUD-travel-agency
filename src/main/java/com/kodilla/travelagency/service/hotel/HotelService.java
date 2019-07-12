@@ -22,7 +22,7 @@ public class HotelService {
                 .orElseThrow(HotelNotFoundException::new);
     }
 
-    public Hotel saveHotelReservation(Hotel hotel) {
+    public Hotel saveOrUpdateHotel(Hotel hotel) {
         return hotelDAO.save(hotel);
     }
 

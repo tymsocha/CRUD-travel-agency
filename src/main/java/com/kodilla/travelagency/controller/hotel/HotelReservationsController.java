@@ -1,8 +1,6 @@
 package com.kodilla.travelagency.controller.hotel;
 
-import com.kodilla.travelagency.api.hotel.HotelDTO;
 import com.kodilla.travelagency.api.hotel.HotelReservationDTO;
-import com.kodilla.travelagency.core.hotel.HotelReservation;
 import com.kodilla.travelagency.core.hotel.RoomType;
 import com.kodilla.travelagency.exceptions.HotelNotFoundException;
 import com.kodilla.travelagency.exceptions.HotelReservationNotFound;
@@ -46,13 +44,13 @@ public class HotelReservationsController {
     @ApiOperation(value = "Create Hotel Reservation")
     @PostMapping(value = "create", consumes = APPLICATION_JSON_VALUE)
     public HotelReservationDTO createHotelReservation(@RequestBody HotelReservationDTO hotelReservationDTO) {
-        return hotelMapper.mapHotelToHotelDTO(hotelService.createHotelReservation(hotelMapper.mapHotelDTOToHotel(hotelReservationDTO)));
+        return hotelMapper.mapHotelToHotelDTO(hotelService.createOrUpdateHotelReservation(hotelMapper.mapHotelDTOToHotel(hotelReservationDTO)));
     }
 
     @ApiOperation(value = "Update Hotel Reservation")
     @PutMapping(value = "update", consumes = APPLICATION_JSON_VALUE)
     public HotelReservationDTO updateHotelReservation(@RequestBody HotelReservationDTO hotelReservationDTO) {
-        return hotelMapper.mapHotelToHotelDTO(hotelService.createHotelReservation(hotelMapper.mapHotelDTOToHotel(hotelReservationDTO)));
+        return hotelMapper.mapHotelToHotelDTO(hotelService.createOrUpdateHotelReservation(hotelMapper.mapHotelDTOToHotel(hotelReservationDTO)));
     }
 
     @ApiOperation(value = "Delete Hotel Reservation")

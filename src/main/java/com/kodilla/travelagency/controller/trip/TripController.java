@@ -68,13 +68,13 @@ public class TripController {
     @ApiOperation(value = "Create Trip")
     @PostMapping(value = "create", consumes = APPLICATION_JSON_VALUE)
     public TripDTO createTrip(@RequestBody TripDTO tripDTO) {
-        return tripMapper.mapTripToTripDTO(tripService.saveTrip(tripMapper.mapTripDTOToTrip(tripDTO)));
+        return tripMapper.mapTripToTripDTO(tripService.saveOrUpdateTrip(tripMapper.mapTripDTOToTrip(tripDTO)));
     }
 
     @ApiOperation(value = "Update Trip")
     @PutMapping(value = "update", consumes = APPLICATION_JSON_VALUE)
     public TripDTO updateTrip(@RequestBody TripDTO tripDTO) {
-        tripService.saveTrip(tripMapper.mapTripDTOToTrip(tripDTO));
+        tripService.saveOrUpdateTrip(tripMapper.mapTripDTOToTrip(tripDTO));
         return tripDTO;
     }
 

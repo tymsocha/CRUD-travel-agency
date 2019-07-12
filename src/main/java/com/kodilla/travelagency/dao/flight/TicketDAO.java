@@ -1,7 +1,8 @@
 package com.kodilla.travelagency.dao.flight;
 
-import com.kodilla.travelagency.core.car.CarReservation;
+import com.kodilla.travelagency.core.flight.Airline;
 import com.kodilla.travelagency.core.flight.Ticket;
+import com.kodilla.travelagency.core.trip.Trip;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
@@ -16,11 +17,19 @@ public interface TicketDAO extends CrudRepository<Ticket, Long> {
 
     Optional<Ticket> findById(Long id);
 
-    Optional<Ticket> deleteTaskById(Long id);
+    Optional<Ticket> deleteTicketById(Long id);
 
     @Override
     void deleteAll();
 
     @Override
     long count();
+
+    List<Ticket> findAllByTrip(Trip trip);
+
+    List<Ticket> findAllByFirstNameOrLastName(String firstName, String lastName);
+
+    List<Ticket> findAllByTripAndAirline(Trip trip, Airline airline);
+
+    List<Ticket> findAllByAirline(Airline airline);
 }

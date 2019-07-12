@@ -47,13 +47,13 @@ public class PlacesController {
     @ApiOperation(value = "Save Place")
     @PostMapping(value = "save", consumes = APPLICATION_JSON_VALUE)
     public PlaceDTO savePlace(@RequestBody PlaceDTO placeDTO) {
-        return placeMapper.mapPlaceToPlaceDTO(placesService.savePlace(placeMapper.mapPlaceDTOToPlace(placeDTO)));
+        return placeMapper.mapPlaceToPlaceDTO(placesService.saveOrUpdatePlace(placeMapper.mapPlaceDTOToPlace(placeDTO)));
     }
 
     @ApiOperation(value = "Update Place")
     @PutMapping(value = "update", consumes = APPLICATION_JSON_VALUE)
     public PlaceDTO updatePlace(@RequestBody PlaceDTO placeDTO) {
-        return placeMapper.mapPlaceToPlaceDTO(placesService.savePlace(placeMapper.mapPlaceDTOToPlace(placeDTO)));
+        return placeMapper.mapPlaceToPlaceDTO(placesService.saveOrUpdatePlace(placeMapper.mapPlaceDTOToPlace(placeDTO)));
     }
 
     @ApiOperation(value = "Delete Place")

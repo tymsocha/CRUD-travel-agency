@@ -1,8 +1,6 @@
 package com.kodilla.travelagency.controller.hotel;
 
 import com.kodilla.travelagency.api.hotel.HotelDTO;
-import com.kodilla.travelagency.api.hotel.HotelReservationDTO;
-import com.kodilla.travelagency.core.hotel.Hotel;
 import com.kodilla.travelagency.exceptions.HotelNotFoundException;
 import com.kodilla.travelagency.mapper.hotel.HotelMapper;
 import com.kodilla.travelagency.service.hotel.HotelService;
@@ -12,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
@@ -50,13 +47,13 @@ public class HotelController {
     @ApiOperation(value = "Add Hotel to Base")
     @PostMapping(value = "add", consumes = APPLICATION_JSON_VALUE)
     public HotelDTO addHotel(@RequestBody HotelDTO hotelDTO) {
-        return hotelMapper.mapHotelToHotelDTO(hotelService.saveHotelReservation(hotelMapper.mapHotelDTOToHotel(hotelDTO)));
+        return hotelMapper.mapHotelToHotelDTO(hotelService.saveOrUpdateHotel(hotelMapper.mapHotelDTOToHotel(hotelDTO)));
     }
 
     @ApiOperation(value = "Update Hotel Details")
     @PutMapping(value = "update", consumes = APPLICATION_JSON_VALUE)
     public HotelDTO updateHotel(@RequestBody HotelDTO hotelDTO) {
-        return hotelMapper.mapHotelToHotelDTO(hotelService.saveHotelReservation(hotelMapper.mapHotelDTOToHotel(hotelDTO)));
+        return hotelMapper.mapHotelToHotelDTO(hotelService.saveOrUpdateHotel(hotelMapper.mapHotelDTOToHotel(hotelDTO)));
     }
 
     @ApiOperation(value = "Delete Hotel")

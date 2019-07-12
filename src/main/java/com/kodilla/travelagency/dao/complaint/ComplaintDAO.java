@@ -15,7 +15,7 @@ public interface ComplaintDAO extends CrudRepository<Complaint, Long> {
 
     Optional<Complaint> findById(Long id);
 
-    Optional<Complaint> deleteTaskById(Long id);
+    Optional<Complaint> deleteComplaintById(Long id);
 
     @Override
     void deleteAll();

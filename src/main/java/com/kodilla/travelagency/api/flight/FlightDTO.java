@@ -1,5 +1,6 @@
 package com.kodilla.travelagency.api.flight;
 
+import com.kodilla.travelagency.core.flight.Airline;
 import com.kodilla.travelagency.core.flight.Ticket;
 import lombok.*;
 
@@ -14,7 +15,7 @@ import java.util.List;
 public class FlightDTO {
     private Long id;
 
-    private String airline;
+    private Airline airline;
 
     private String origin;
 

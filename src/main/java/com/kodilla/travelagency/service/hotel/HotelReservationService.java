@@ -33,7 +33,7 @@ public class HotelReservationService {
         return hotelReservationDAO.findAllByGuestName(guestName);
     }
 
-    public HotelReservation createHotelReservation(HotelReservation hotelReservation) {
+    public HotelReservation createOrUpdateHotelReservation(HotelReservation hotelReservation) {
         return hotelReservationDAO.save(hotelReservation);
     }
 

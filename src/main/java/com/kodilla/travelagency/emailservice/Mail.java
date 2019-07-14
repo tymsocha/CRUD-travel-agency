@@ -12,8 +12,11 @@ import lombok.Setter;
 public class Mail {
 
     private String mailTo;
+
     private String subject;
+
     private String message;
+
     private String toCC;
 
     public Mail(String mailTo, String subject, String message) {

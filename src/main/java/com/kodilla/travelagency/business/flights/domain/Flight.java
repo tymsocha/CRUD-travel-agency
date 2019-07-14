@@ -49,8 +49,4 @@ public class Flight {
             inverseJoinColumns = {@JoinColumn(name = "ticket_id", referencedColumnName = "id")}
     )
     private List<Ticket> ticketList;
-
-    public Long getFlightDuration() {
-        return flightDuration = Duration.between(departureDate.toLocalTime(), arrivalDate.toLocalTime()).toHours();
-    }
 }

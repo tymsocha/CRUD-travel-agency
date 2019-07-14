@@ -47,12 +47,4 @@ public class CarReservation {
     @ManyToOne(fetch = FetchType.LAZY, targetEntity = Trip.class)
     @JoinColumn(name = "trip_id")
     private Trip trip;
-
-    public BigDecimal getNumberOfRentDays() {
-        return numberOfRentDays = new BigDecimal(ChronoUnit.DAYS.between(startRentDate, endRentDate));
-    }
-
-    public BigDecimal getPrice() {
-        return price = pricePerDay.multiply(numberOfRentDays);
-    }
 }

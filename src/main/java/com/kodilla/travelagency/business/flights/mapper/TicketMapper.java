@@ -19,6 +19,8 @@ public class TicketMapper {
                 .meal(ticket.getMeal())
                 .price(ticket.getPrice())
                 .trip(ticket.getTrip())
+                .airline(ticket.getAirline())
+                .flights(ticket.getFlights())
                 .build();
     }
 
@@ -32,6 +34,8 @@ public class TicketMapper {
                 .meal(ticketDTO.getMeal())
                 .price(ticketDTO.getPrice())
                 .trip(ticketDTO.getTrip())
+                .airline(ticketDTO.getAirline())
+                .flights(ticketDTO.getFlights())
                 .build();
     }
 
@@ -45,6 +49,8 @@ public class TicketMapper {
                     .meal(ticketDTO.getMeal())
                     .price(ticketDTO.getPrice())
                     .trip(ticketDTO.getTrip())
+                    .airline(ticketDTO.getAirline())
+                    .flights(ticketDTO.getFlights())
                     .build())
                 .collect(Collectors.toList());
     }
@@ -59,6 +65,8 @@ public class TicketMapper {
                     .meal(ticket.getMeal())
                     .price(ticket.getPrice())
                     .trip(ticket.getTrip())
+                    .airline(ticket.getAirline())
+                    .flights(ticket.getFlights())
                     .build())
                 .collect(Collectors.toList());
     }

@@ -1,10 +1,13 @@
 package com.kodilla.travelagency.business.flights.api;
 
 import com.kodilla.travelagency.business.flights.FlightCabin;
+import com.kodilla.travelagency.business.flights.domain.Airline;
+import com.kodilla.travelagency.business.flights.domain.Flight;
 import com.kodilla.travelagency.business.trip.domain.Trip;
 import lombok.*;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Getter
 @Setter
@@ -28,4 +31,7 @@ public class TicketDTO {
 
     private Trip trip;
 
+    private Airline airline;
+
+    private List<Flight> flights;
 }

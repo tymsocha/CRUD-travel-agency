@@ -78,7 +78,7 @@ public class PlacesController {
     @GetMapping(value = "get/cityAndDistance")
     public List<PlaceDTO> getPlacesByNearestCityAndDistance(@RequestBody PlaceDTO placeDTO) {
         return placeMapper.mapPlaceListToPlaceDTOList(
-                placesService.findPlacesByNearestCityAnddistance(
+                placesService.findPlacesByNearestCityAndDistance(
                         placeDTO.getNearestCity(), placeDTO.getDistanceFromNearestCity()
                 )
         );
@@ -94,11 +94,5 @@ public class PlacesController {
     @GetMapping(value = "get/monument")
     public List<PlaceDTO> getPlacesByMonumentStatus(@RequestBody PlaceDTO placeDTO) {
         return placeMapper.mapPlaceListToPlaceDTOList(placesService.findPlacesByIsMonument(placeDTO.getIsMonument()));
-    }
-
-    @ApiOperation(value = "Get Places Using All Parameters")
-    @GetMapping(value = "get/params")
-    public List<PlaceDTO> getPlacesUsingAllParams(@RequestBody PlaceDTO placeDTO) {
-        return placeMapper.mapPlaceListToPlaceDTOList(placesService.findPlaceUsingAllParameters(placeDTO));
     }
 }

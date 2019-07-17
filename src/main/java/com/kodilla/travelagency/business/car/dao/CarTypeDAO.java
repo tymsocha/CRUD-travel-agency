@@ -15,7 +15,8 @@ public interface CarTypeDAO extends CrudRepository<CarType, Long> {
 
     Optional<CarType> findById(Long id);
 
-    Optional<CarType> deleteCarTypeById(Long id);
+    @Override
+    void delete(Long carTypeId);
 
     @Override
     void deleteAll();

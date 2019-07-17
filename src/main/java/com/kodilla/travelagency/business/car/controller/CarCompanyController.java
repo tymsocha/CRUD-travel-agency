@@ -59,6 +59,6 @@ public class CarCompanyController {
     @ApiOperation(value = "Delete Car Company")
     @DeleteMapping(value = "delete/{carCompanyId}")
     public void deleteHotel(@PathVariable Long carCompanyId) throws CarCompanyNotFoundException {
-        service.deleteCarCompany(carCompanyId);
+        service.delete(carCompanyId);
     }
 }

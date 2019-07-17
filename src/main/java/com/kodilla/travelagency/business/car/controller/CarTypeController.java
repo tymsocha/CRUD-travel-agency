@@ -29,7 +29,7 @@ public class CarTypeController {
     @ApiOperation(value = "Get All Car Types")
     @GetMapping(value = "getAll")
     public List<CarTypeDTO> getCarCompanies() {
-        return mapper.mapCarTypeListToDTOList(service.getAllCarCompanies());
+        return mapper.mapCarTypeListToDTOList(service.getAllCarTypes());
     }
 
     @ApiOperation(value = "Get Car Type By Id")

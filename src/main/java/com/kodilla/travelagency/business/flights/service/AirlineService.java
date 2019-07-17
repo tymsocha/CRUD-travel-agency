@@ -30,7 +30,7 @@ public class AirlineService {
         return airlineDAO.findById(airlineId).orElseThrow(AirlineNotFoundException::new);
     }
 
-    public void deleteAirline(Long airlineId) throws AirlineNotFoundException {
-        airlineDAO.deleteAirlineById(airlineId).orElseThrow(AirlineNotFoundException::new);
+    public void deleteAirline(Long airlineId) {
+        airlineDAO.delete(airlineId);
     }
 }

@@ -44,8 +44,8 @@ public class FlightService {
         return dao.findById(flightId).orElseThrow(FlightNotFoundException::new);
     }
 
-    public void deleteFlight(Long flightId) throws FlightNotFoundException {
-        dao.deleteFlightById(flightId).orElseThrow(FlightNotFoundException::new);
+    public void deleteFlight(Long flightId) {
+        dao.delete(flightId);
     }
 
     public List<Flight> getFlightsFromTicket(Long ticketId) throws TicketNotFoundException {
@@ -71,7 +71,7 @@ public class FlightService {
 
     public List<Flight> getFlightsByArrivalDate(String arrival) {
         LocalDateTime arrivalDate = LocalDateTime.parse(arrival);
-        return dao.findAllByDepartureDate(arrivalDate);
+        return dao.findAllByArrivalDate(arrivalDate);
     }
 
     public List<Flight> getFlightsByTrip(Long tripId) throws TripNotFoundException {

@@ -31,8 +31,8 @@ public class ComplaintService {
         return dao.findById(ComplaintId).orElseThrow(ComplaintNotFoundException::new);
     }
 
-    public void deleteComplaint(Long ComplaintId) throws ComplaintNotFoundException {
-        dao.deleteComplaintById(ComplaintId).orElseThrow(ComplaintNotFoundException::new);
+    public void deleteComplaint(Long ComplaintId) {
+        dao.delete(ComplaintId);
     }
 
     public Complaint findComplaintByTrip(Long tripId) throws TripNotFoundException, ComplaintNotFoundException {

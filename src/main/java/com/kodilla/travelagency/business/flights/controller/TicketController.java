@@ -2,6 +2,7 @@ package com.kodilla.travelagency.business.flights.controller;
 
 import com.kodilla.travelagency.business.flights.api.PersonApi;
 import com.kodilla.travelagency.business.flights.api.TicketDTO;
+import com.kodilla.travelagency.business.flights.facede.TicketFacade;
 import com.kodilla.travelagency.business.flights.mapper.TicketMapper;
 import com.kodilla.travelagency.business.flights.service.TicketService;
 import com.kodilla.travelagency.exceptions.AirlineNotFoundException;
@@ -22,51 +23,48 @@ import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
 @RequestMapping("v1/travel/ticket")
 public class TicketController {
     @Autowired
-    private TicketService service;
-
-    @Autowired
-    private TicketMapper mapper;
+    private TicketFacade facade;
 
     @ApiOperation(value = "Get All Tickets")
     @GetMapping(value = "getAll")
     public List<TicketDTO> getTickets() {
-        return mapper.mapTicketListToTicketDTOList(service.getAllTickets());
+        return facade.getTickets();
     }
 
     @ApiOperation(value = "Get Ticket By Id")
     @GetMapping(value = "get/{ticketId}")
     public TicketDTO getTicket(@PathVariable Long ticketId) throws TicketNotFoundException {
-        return mapper.mapTicketToTicketDTO(service.findTicketById(ticketId));
+        return facade.getTicket(ticketId);
     }
 
     @ApiOperation(value = "Add Ticket to Base")
     @PostMapping(value = "add", consumes = APPLICATION_JSON_VALUE)
     public TicketDTO addTicket(@RequestBody TicketDTO ticketDTO) {
-        return mapper.mapTicketToTicketDTO(service.saveOrUpdateTicket(mapper.mapTicketDTOToTicket(ticketDTO)));
+        return facade.addTicket(ticketDTO);
     }
 
     @ApiOperation(value = "Update Ticket Details")
     @PutMapping(value = "update", consumes = APPLICATION_JSON_VALUE)
     public TicketDTO updateTicket(@RequestBody TicketDTO ticketDTO) {
-        return mapper.mapTicketToTicketDTO(service.saveOrUpdateTicket(mapper.mapTicketDTOToTicket(ticketDTO)));
+        return facade.updateTicket(ticketDTO);
     }
 
     @ApiOperation(value = "Delete Ticket")
     @DeleteMapping(value = "delete/{ticketId}")
     public void deleteHotel(@PathVariable Long ticketId) throws TicketNotFoundException {
-        service.deleteTicket(ticketId);
+        facade.deleteHotel(ticketId);
     }
 
     @ApiOperation(value = "Get All Tickets for Person")
     @GetMapping(value = "getAll/person")
     public List<TicketDTO> getTicketsForPerson(@RequestBody PersonApi api) {
-        return mapper.mapTicketListToTicketDTOList(service.getTicketsByLastOrFirstName(api.getFirstName(), api.getLastName()));
+        return facade.getTicketsForPerson(api);
     }
 
     @ApiOperation(value = "Get All Tickets By Airline")
     @GetMapping(value = "getAll/airline/{airlineId}")
     public List<TicketDTO> getTicketsByAirline(@PathVariable Long airlineId) throws AirlineNotFoundException {
-        return mapper.mapTicketListToTicketDTOList(service.getAllByAirline(airlineId));
+        return facade.getTicketsByAirline(airlineId);
     }
 
     @ApiOperation(value = "Get All Tickets By Airline")
@@ -75,6 +73,6 @@ public class TicketController {
             @PathVariable Long airlineId,
             @PathVariable Long tripId
     ) throws AirlineNotFoundException, TripNotFoundException {
-        return mapper.mapTicketListToTicketDTOList(service.getAllByTripAndAirline(tripId, airlineId));
+        return facade.getTicketsByAirlineAndTrip(airlineId, tripId);
     }
 }

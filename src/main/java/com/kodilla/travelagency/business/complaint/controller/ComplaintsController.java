@@ -1,9 +1,7 @@
 package com.kodilla.travelagency.business.complaint.controller;
 
 import com.kodilla.travelagency.business.complaint.facede.ComplaintFacade;
-import com.kodilla.travelagency.business.complaint.service.ComplaintService;
 import com.kodilla.travelagency.business.complaint.api.ComplaintDTO;
-import com.kodilla.travelagency.business.complaint.mapper.ComplaintMapper;
 import com.kodilla.travelagency.exceptions.ComplaintNotFoundException;
 import com.kodilla.travelagency.exceptions.TripNotFoundException;
 import io.swagger.annotations.ApiOperation;
@@ -50,7 +48,7 @@ public class ComplaintsController {
     @ApiOperation(value = "Delete Complaint")
     @DeleteMapping(value = "delete/{complaintId}")
     public void deleteHotel(@PathVariable Long complaintId) {
-        facade.deleteHotel(complaintId);
+        facade.deleteComplaint(complaintId);
     }
 
     @ApiOperation(value = "Get All Complaints")

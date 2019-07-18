@@ -37,7 +37,7 @@ public class PlacesFacade {
         return placeMapper.mapPlaceToPlaceDTO(placesService.saveOrUpdatePlace(placeMapper.mapPlaceDTOToPlace(placeDTO)));
     }
 
-    public void deletePlace(Long placeId) throws PlaceNotFoundException {
+    public void deletePlace(Long placeId) {
         placesService.deletePlace(placeId);
     }
 

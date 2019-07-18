@@ -1,8 +1,9 @@
-package com.kodilla.travelagency.services;
+package com.kodilla.travelagency.facades;
 
+import com.kodilla.travelagency.business.car.api.CarCompanyDTO;
 import com.kodilla.travelagency.business.car.dao.CarCompanyDAO;
 import com.kodilla.travelagency.business.car.domain.CarCompany;
-import com.kodilla.travelagency.business.car.service.CarCompanyService;
+import com.kodilla.travelagency.business.car.facede.CarCompanyFacade;
 import com.kodilla.travelagency.exceptions.CarCompanyNotFoundException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,9 +17,9 @@ import static org.junit.Assert.assertEquals;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
-public class CarCompanyTestSuite {
+public class CarCompanyFacadeTestSuite {
     @Autowired
-    private CarCompanyService service;
+    private CarCompanyFacade facade;
 
     @Autowired
     private CarCompanyDAO dao;
@@ -33,9 +34,9 @@ public class CarCompanyTestSuite {
         dao.save(carCompany1);
         dao.save(carCompany2);
         //When
-        List<CarCompany> carCompanys = service.getAllCarCompanies();
+        List<CarCompanyDTO> carCompanies = facade.getCarCompanies();
         //Then
-        assertEquals(3, carCompanys.size());
+        assertEquals(3, carCompanies.size());
         //CleanUp
         dao.delete(carCompany);
         dao.delete(carCompany1);
@@ -49,7 +50,7 @@ public class CarCompanyTestSuite {
         CarCompany savedCarCompany = dao.save(carCompany);
         //When and then
         try {
-            CarCompany foundCarCompany = service.findCarCompanyById(savedCarCompany.getId());
+            CarCompanyDTO foundCarCompany = facade.getCarCompany(savedCarCompany.getId());
             assertEquals("LH", foundCarCompany.getCarCompanyName());
             assertEquals("FRA", foundCarCompany.getAddress());
             assertEquals("123", foundCarCompany.getPhoneNumber());
@@ -66,8 +67,8 @@ public class CarCompanyTestSuite {
         CarCompany carCompany = CarCompany.builder().carCompanyName("LH").address("FRA").phoneNumber("123").build();
         CarCompany savedCarCompany = dao.save(carCompany);
         //When
-        service.delete(savedCarCompany.getId());
-        List<CarCompany> carCompanies = service.getAllCarCompanies();
+        facade.deleteCarCompany(savedCarCompany.getId());
+        List<CarCompanyDTO> carCompanies = facade.getCarCompanies();
         //Then
         assertEquals(0, carCompanies.size());
     }

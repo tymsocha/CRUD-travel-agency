@@ -34,7 +34,7 @@ public class ComplaintFacade {
         return mapper.mapComplaintToComplaintDTO(service.saveOrUpdateComplaint(mapper.mapComplaintDTOToComplaint(complaintDTO)));
     }
 
-    public void deleteHotel(Long complaintId) {
+    public void deleteComplaint(Long complaintId) {
         service.deleteComplaint(complaintId);
     }
 

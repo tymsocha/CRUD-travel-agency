@@ -37,7 +37,7 @@ public class FlightFacade {
         return mapper.mapFlightToFlightDTO(service.saveOrUpdateFlight(mapper.mapFlightDTOToFlight(flightDTO)));
     }
 
-    public void deleteHotel(Long flightId) throws FlightNotFoundException {
+    public void deleteFlight(Long flightId) {
         service.deleteFlight(flightId);
     }
 

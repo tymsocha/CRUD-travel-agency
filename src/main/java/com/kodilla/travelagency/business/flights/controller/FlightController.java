@@ -2,8 +2,6 @@ package com.kodilla.travelagency.business.flights.controller;
 
 import com.kodilla.travelagency.business.flights.api.FlightDTO;
 import com.kodilla.travelagency.business.flights.facede.FlightFacade;
-import com.kodilla.travelagency.business.flights.mapper.FlightMapper;
-import com.kodilla.travelagency.business.flights.service.FlightService;
 import com.kodilla.travelagency.business.flights.api.FlightsAndDestApi;
 import com.kodilla.travelagency.exceptions.AirlineNotFoundException;
 import com.kodilla.travelagency.exceptions.FlightNotFoundException;
@@ -55,7 +53,7 @@ public class FlightController {
     @ApiOperation(value = "Delete Flight")
     @DeleteMapping(value = "delete/{flightId}")
     public void deleteHotel(@PathVariable Long flightId) throws FlightNotFoundException {
-        facade.deleteHotel(flightId);
+        facade.deleteFlight(flightId);
     }
 
     @ApiOperation(value = "Get All Flights in a Trip")

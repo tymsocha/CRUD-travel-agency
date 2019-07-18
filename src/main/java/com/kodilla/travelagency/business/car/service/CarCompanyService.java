@@ -30,7 +30,7 @@ public class CarCompanyService {
         return carCompanyDAO.findById(carCompanyId).orElseThrow(CarCompanyNotFoundException::new);
     }
 
-    public void deleteCarCompany(Long carCompanyId) throws CarCompanyNotFoundException {
-        carCompanyDAO.deleteCarCompanyById(carCompanyId).orElseThrow(CarCompanyNotFoundException::new);
+    public void delete(Long carCompanyId) {
+        carCompanyDAO.delete(carCompanyId);
     }
 }

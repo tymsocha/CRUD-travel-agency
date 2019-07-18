@@ -12,6 +12,7 @@ public class HotelReservationMapper {
     public HotelReservation mapHotelDTOToHotel(HotelReservationDTO hotelReservationDTO) {
         return HotelReservation.builder()
                 .id(hotelReservationDTO.getId())
+                .guestName(hotelReservationDTO.getGuestName())
                 .hotel(hotelReservationDTO.getHotel())
                 .checkIn(hotelReservationDTO.getCheckIn())
                 .checkOut(hotelReservationDTO.getCheckOut())
@@ -27,6 +28,7 @@ public class HotelReservationMapper {
     public HotelReservationDTO mapHotelToHotelDTO(HotelReservation hotelReservation) {
         return HotelReservationDTO.builder()
                 .id(hotelReservation.getId())
+                .guestName(hotelReservation.getGuestName())
                 .hotel(hotelReservation.getHotel())
                 .checkIn(hotelReservation.getCheckIn())
                 .checkOut(hotelReservation.getCheckOut())
@@ -42,6 +44,7 @@ public class HotelReservationMapper {
     public List<HotelReservation> mapHotleDTOListToHotelList(List<HotelReservationDTO> hotelReservationDTOList) {
         return hotelReservationDTOList.stream().map(hotelReservationDTO -> HotelReservation.builder()
                     .id(hotelReservationDTO.getId())
+                    .guestName(hotelReservationDTO.getGuestName())
                     .hotel(hotelReservationDTO.getHotel())
                     .checkIn(hotelReservationDTO.getCheckIn())
                     .checkOut(hotelReservationDTO.getCheckOut())
@@ -58,6 +61,7 @@ public class HotelReservationMapper {
     public List<HotelReservationDTO> mapHotleListToHotelDTOList(List<HotelReservation> hotelReservationList) {
         return hotelReservationList.stream().map(hotelReservation -> HotelReservationDTO.builder()
                     .id(hotelReservation.getId())
+                    .guestName(hotelReservation.getGuestName())
                     .hotel(hotelReservation.getHotel())
                     .checkIn(hotelReservation.getCheckIn())
                     .checkOut(hotelReservation.getCheckOut())

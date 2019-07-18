@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 public class HotelReservationDTO {
     private Long id;
 
-    private Hotel hotel;
+    private String guestName;
 
     private RoomType roomType;
 
@@ -32,5 +32,7 @@ public class HotelReservationDTO {
 
     private BigDecimal totalCostOfStay;
 
+    private Hotel hotel;
+    
     private Trip trip;
 }

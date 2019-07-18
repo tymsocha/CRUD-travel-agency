@@ -1,5 +1,6 @@
 package com.kodilla.travelagency.business.car.controller;
 
+import com.kodilla.travelagency.business.car.facede.CarReservationFacade;
 import com.kodilla.travelagency.business.car.mapper.CarReservationsMapper;
 import com.kodilla.travelagency.business.car.api.CarResApi;
 import com.kodilla.travelagency.business.car.api.CarReservationDTO;
@@ -25,62 +26,59 @@ import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
 @RequestMapping("v1/travel/carRes")
 public class CarReservationController {
     @Autowired
-    private CarReservationService service;
-
-    @Autowired
-    private CarReservationsMapper mapper;
+    private CarReservationFacade facade;
 
     @ApiOperation(value = "Get All Car Reservations")
     @GetMapping(value = "getAll")
     public List<CarReservationDTO> getCarReservations() {
-        return mapper.mapCarListToCarDTOList(service.getAllCarReservations());
+        return facade.getCarReservations();
     }
 
     @ApiOperation(value = "Get Car Reservation By Id")
     @GetMapping(value = "get/{carReservationId}")
     public CarReservationDTO getCarReservation(@PathVariable Long carReservationId) throws CarReservationNotFoundException {
-        return mapper.mapCarToCarDTO(service.findCarReservationById(carReservationId));
+        return facade.getCarReservation(carReservationId);
     }
 
     @ApiOperation(value = "Add Car Reservation to Base")
     @PostMapping(value = "add", consumes = APPLICATION_JSON_VALUE)
     public CarReservationDTO addCarReservation(@RequestBody CarReservationDTO carReservationDTO) {
-        return mapper.mapCarToCarDTO(service.saveOrUpdateCarReservation(mapper.mapCarDTOToCar(carReservationDTO)));
+        return facade.addCarReservation(carReservationDTO);
     }
 
     @ApiOperation(value = "Update Car Company Details")
     @PutMapping(value = "update", consumes = APPLICATION_JSON_VALUE)
     public CarReservationDTO updateCarReservation(@RequestBody CarReservationDTO carReservationDTO) {
-        return mapper.mapCarToCarDTO(service.saveOrUpdateCarReservation(mapper.mapCarDTOToCar(carReservationDTO)));
+        return updateCarReservation(carReservationDTO);
     }
 
     @ApiOperation(value = "Delete Car Company")
     @DeleteMapping(value = "delete/{carReservationId}")
-    public void deleteHotel(@PathVariable Long carReservationId) throws CarReservationNotFoundException {
-        service.deleteCarReservation(carReservationId);
+    public void deleteCarReservation(@PathVariable Long carReservationId) throws CarReservationNotFoundException {
+        facade.deleteCarReservation(carReservationId);
     }
 
     @ApiOperation(value = "Get All Car Reservations By Type")
     @GetMapping(value = "getAll/carType/{carTypeId}")
     public List<CarReservationDTO> getCarReservationsByCarType(@PathVariable Long carTypeId) throws CarTypeNotFoundException {
-        return mapper.mapCarListToCarDTOList(service.getAllByCarType(carTypeId));
+        return facade.getCarReservationsByCarType(carTypeId);
     }
 
     @ApiOperation(value = "Get All Car Reservations By Company")
     @GetMapping(value = "getAll/company/{companyId}")
     public List<CarReservationDTO> getCarReservationsByCompany(@PathVariable Long companyId) throws CarCompanyNotFoundException {
-        return mapper.mapCarListToCarDTOList(service.getAllByCarCompany(companyId));
+        return facade.getCarReservationsByCompany(companyId);
     }
 
     @ApiOperation(value = "Get All Car Reservations By Trip")
     @GetMapping(value = "getAll/trip")
     public List<CarReservationDTO> getCarReservationsByTrip(@RequestBody CarResApi api) throws TripNotFoundException {
-        return mapper.mapCarListToCarDTOList(service.getAllByTrip(api.getTripName()));
+        return facade.getCarReservationsByTrip(api);
     }
 
     @ApiOperation(value = "Get All Car Reservations By Rent Date")
     @GetMapping(value = "getAll/rentDate")
     public CarReservationDTO getCarReservationsRentDate(@RequestBody CarResApi api) throws CarReservationNotFoundException {
-        return mapper.mapCarToCarDTO(service.getByRentStart(api.getRentStart()));
+        return facade.getCarReservationsRentDate(api);
     }
 }

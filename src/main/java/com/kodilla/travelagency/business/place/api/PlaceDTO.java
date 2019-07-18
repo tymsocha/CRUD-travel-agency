@@ -12,6 +12,8 @@ import java.math.BigDecimal;
 public class PlaceDTO {
     private Long id;
 
+    private String placeName;
+
     private String country;
 
     private String description;

@@ -5,6 +5,7 @@ import com.kodilla.travelagency.business.car.dao.CarTypeDAO;
 import com.kodilla.travelagency.exceptions.CarTypeNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -13,7 +14,7 @@ public class CarTypeService {
     @Autowired
     private CarTypeDAO carTypeDAO;
 
-    public List<CarType> getAllCarCompanies() {
+    public List<CarType> getAllCarTypes() {
         return carTypeDAO.findAll();
     }
 
@@ -25,8 +26,8 @@ public class CarTypeService {
         return carTypeDAO.findById(carTypeId).orElseThrow(CarTypeNotFoundException::new);
     }
 
-    public void deleteCarType(Long carTypeId) throws CarTypeNotFoundException {
-        carTypeDAO.deleteCarTypeById(carTypeId).orElseThrow(CarTypeNotFoundException::new);
+    public void deleteCarType(Long carTypeId)  {
+        carTypeDAO.delete(carTypeId);
     }
 
     public List<CarType> getAllWithAutomaticTrans(Boolean isAuto) {

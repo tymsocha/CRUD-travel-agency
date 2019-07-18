@@ -30,7 +30,7 @@ public class HotelService {
         return hotelDAO.findById(hotelId).orElseThrow(HotelNotFoundException::new);
     }
 
-    public void deleteHotel(Long hotelId) throws HotelNotFoundException {
-        hotelDAO.deleteHotelById(hotelId).orElseThrow(HotelNotFoundException::new);
+    public void deleteHotel(Long hotelId) {
+        hotelDAO.delete(hotelId);
     }
 }

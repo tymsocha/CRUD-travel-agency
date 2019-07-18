@@ -1,5 +1,6 @@
 package com.kodilla.travelagency.business.complaint.controller;
 
+import com.kodilla.travelagency.business.complaint.facede.ComplaintFacade;
 import com.kodilla.travelagency.business.complaint.service.ComplaintService;
 import com.kodilla.travelagency.business.complaint.api.ComplaintDTO;
 import com.kodilla.travelagency.business.complaint.mapper.ComplaintMapper;
@@ -20,44 +21,41 @@ import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
 @RequestMapping("v1/travel/complaints")
 public class ComplaintsController {
     @Autowired
-    private ComplaintService service;
-
-    @Autowired
-    private ComplaintMapper mapper;
+    private ComplaintFacade facade;
 
     @ApiOperation(value = "Get All Complaints")
     @GetMapping(value = "getAll")
     public List<ComplaintDTO> getComplaints() {
-        return mapper.mapComplaintListToComplaintDTOList(service.getAllComplaints());
+        return facade.getComplaints();
     }
 
     @ApiOperation(value = "Get Complaint By Id")
     @GetMapping(value = "get/{complaintId}")
     public ComplaintDTO getComplaint(@PathVariable Long complaintId) throws ComplaintNotFoundException {
-        return mapper.mapComplaintToComplaintDTO(service.findComplaintById(complaintId));
+        return facade.getComplaint(complaintId);
     }
 
     @ApiOperation(value = "Add Complaint to Base")
     @PostMapping(value = "add", consumes = APPLICATION_JSON_VALUE)
     public ComplaintDTO addComplaint(@RequestBody ComplaintDTO complaintDTO) {
-        return mapper.mapComplaintToComplaintDTO(service.saveOrUpdateComplaint(mapper.mapComplaintDTOToComplaint(complaintDTO)));
+        return facade.addComplaint(complaintDTO);
     }
 
     @ApiOperation(value = "Update Complaint Details")
     @PutMapping(value = "update", consumes = APPLICATION_JSON_VALUE)
     public ComplaintDTO updateComplaint(@RequestBody ComplaintDTO complaintDTO) {
-        return mapper.mapComplaintToComplaintDTO(service.saveOrUpdateComplaint(mapper.mapComplaintDTOToComplaint(complaintDTO)));
+        return facade.updateComplaint(complaintDTO);
     }
 
     @ApiOperation(value = "Delete Complaint")
     @DeleteMapping(value = "delete/{complaintId}")
-    public void deleteHotel(@PathVariable Long complaintId) throws ComplaintNotFoundException {
-        service.deleteComplaint(complaintId);
+    public void deleteHotel(@PathVariable Long complaintId) {
+        facade.deleteHotel(complaintId);
     }
 
     @ApiOperation(value = "Get All Complaints")
     @GetMapping(value = "getAll/trip/{tripId}")
     public ComplaintDTO getComplaintsByTrip(@PathVariable Long tripId) throws ComplaintNotFoundException, TripNotFoundException {
-        return mapper.mapComplaintToComplaintDTO(service.findComplaintByTrip(tripId));
+        return facade.getComplaintsByTrip(tripId);
     }
 }

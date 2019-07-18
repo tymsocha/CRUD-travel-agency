@@ -53,12 +53,4 @@ public class HotelReservation {
     @ManyToOne(fetch = FetchType.LAZY, targetEntity = Trip.class)
     @JoinColumn(name = "trip_id")
     private Trip trip;
-
-    public BigDecimal getNumberOfDays() {
-        return numberOfDays = new BigDecimal(ChronoUnit.DAYS.between(checkIn, checkOut));
-    }
-
-    public BigDecimal getTotalCostOfStay() {
-        return totalCostOfStay = costPerNight.multiply(numberOfDays);
-    }
 }

@@ -31,8 +31,8 @@ public class PlacesService {
         return placeDAO.findById(placeId).orElseThrow(PlaceNotFoundException::new);
     }
 
-    public void deletePlace(Long placeId) throws PlaceNotFoundException {
-        placeDAO.deletePlaceById(placeId).orElseThrow(PlaceNotFoundException::new);
+    public void deletePlace(Long placeId) {
+        placeDAO.delete(placeId);
     }
 
     public List<Place> findPlacesByCountry(String country) {
@@ -43,7 +43,7 @@ public class PlacesService {
         return placeDAO.findAllByNearestCity(nearestCity);
     }
 
-    public List<Place> findPlacesByNearestCityAnddistance(String city, Double distance) {
+    public List<Place> findPlacesByNearestCityAndDistance(String city, Double distance) {
         return placeDAO.findAllByNearestCityAndDistanceFromNearestCity(city, distance);
     }
 
@@ -53,15 +53,5 @@ public class PlacesService {
 
     public List<Place> findPlacesByIsMonument(Boolean isMonument) {
         return placeDAO.findAllByIsMonument(isMonument);
-    }
-
-    public List<Place> findPlaceUsingAllParameters(PlaceDTO placeDTO) {
-        return placeDAO.findAllByCountryAndIsMonumentAndCostToEnterAndNearestCityAndDistanceFromNearestCity(
-                placeDTO.getCountry(),
-                placeDTO.getNearestCity(),
-                placeDTO.getDistanceFromNearestCity(),
-                placeDTO.getCostToEnter(),
-                placeDTO.getIsMonument()
-        );
     }
 }

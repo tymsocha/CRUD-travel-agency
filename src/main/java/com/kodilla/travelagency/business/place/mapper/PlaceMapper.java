@@ -12,6 +12,7 @@ public class PlaceMapper {
     public Place mapPlaceDTOToPlace(PlaceDTO placeDTO) {
         return Place.builder()
                 .id(placeDTO.getId())
+                .placeName(placeDTO.getPlaceName())
                 .country(placeDTO.getCountry())
                 .description(placeDTO.getDescription())
                 .isMonument(placeDTO.getIsMonument())
@@ -24,6 +25,7 @@ public class PlaceMapper {
     public PlaceDTO mapPlaceToPlaceDTO(Place place) {
         return PlaceDTO.builder()
                 .id(place.getId())
+                .placeName(place.getPlaceName())
                 .country(place.getCountry())
                 .description(place.getDescription())
                 .isMonument(place.getIsMonument())
@@ -36,6 +38,7 @@ public class PlaceMapper {
     public List<Place> mapPlaceDTOListToPlaceList(List<PlaceDTO> placeDTOList) {
         return placeDTOList.stream().map(placeDTO -> Place.builder()
                     .id(placeDTO.getId())
+                    .placeName(placeDTO.getPlaceName())
                     .country(placeDTO.getCountry())
                     .description(placeDTO.getDescription())
                     .isMonument(placeDTO.getIsMonument())
@@ -49,6 +52,7 @@ public class PlaceMapper {
     public List<PlaceDTO> mapPlaceListToPlaceDTOList(List<Place> placeList) {
         return placeList.stream().map(place -> PlaceDTO.builder()
                     .id(place.getId())
+                    .placeName(place.getPlaceName())
                     .country(place.getCountry())
                     .description(place.getDescription())
                     .isMonument(place.getIsMonument())

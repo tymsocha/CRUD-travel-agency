@@ -15,7 +15,8 @@ public interface AirlineDAO extends CrudRepository<Airline, Long> {
 
     Optional<Airline> findById(Long id);
 
-    Optional<Airline> deleteAirlineById(Long id);
+    @Override
+    void delete(Long airlineId);
 
     @Override
     void deleteAll();

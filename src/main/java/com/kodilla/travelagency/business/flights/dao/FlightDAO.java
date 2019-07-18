@@ -18,7 +18,8 @@ public interface FlightDAO extends CrudRepository<Flight, Long> {
 
     Optional<Flight> findById(Long id);
 
-    Optional<Flight> deleteFlightById(Long id);
+    @Override
+    void delete(Long flightId);
 
     @Override
     void deleteAll();
@@ -33,4 +34,6 @@ public interface FlightDAO extends CrudRepository<Flight, Long> {
     List<Flight> findAllByOriginAndDestination(String origin, String destination);
 
     List<Flight> findAllByDepartureDate(LocalDateTime departure);
+
+    List<Flight> findAllByArrivalDate(LocalDateTime arrival);
 }

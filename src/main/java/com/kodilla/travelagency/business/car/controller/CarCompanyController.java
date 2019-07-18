@@ -1,5 +1,6 @@
 package com.kodilla.travelagency.business.car.controller;
 
+import com.kodilla.travelagency.business.car.facede.CarCompanyFacade;
 import com.kodilla.travelagency.business.car.mapper.CarCompanyMapper;
 import com.kodilla.travelagency.business.car.api.CarCompanyDTO;
 import com.kodilla.travelagency.business.car.service.CarCompanyService;
@@ -21,44 +22,41 @@ import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
 @RequestMapping("v1/travel/carCompanies")
 public class CarCompanyController {
     @Autowired
-    private CarCompanyService service;
-
-    @Autowired
-    private CarCompanyMapper mapper;
+    private CarCompanyFacade facade;
 
     @ApiOperation(value = "Get All Car Companies")
     @GetMapping(value = "getAll")
     public List<CarCompanyDTO> getCarCompanies() {
-        return mapper.mapCarCompanyListToDTOList(service.getAllCarCompanies());
+        return facade.getCarCompanies();
     }
 
     @ApiOperation(value = "Get Car Company By Id")
     @GetMapping(value = "get/{carCompanyId}")
     public CarCompanyDTO getCarCompany(@PathVariable Long carCompanyId) throws CarCompanyNotFoundException {
-        return mapper.mapCarCompanyToDTO(service.findCarCompanyById(carCompanyId));
+        return facade.getCarCompany(carCompanyId);
     }
 
     @ApiOperation(value = "Find Car Company By address, phone or name")
     @GetMapping(value = "get/{parameter}")
     public CarCompanyDTO getCarCompany(@PathVariable String parameter) throws CarCompanyNotFoundException {
-        return mapper.mapCarCompanyToDTO(service.findCarCompanyByParameter(parameter));
+        return facade.getCarCompany(parameter);
     }
 
     @ApiOperation(value = "Add Car Company to Base")
     @PostMapping(value = "add", consumes = APPLICATION_JSON_VALUE)
     public CarCompanyDTO addCarCompany(@RequestBody CarCompanyDTO carCompanyDTO) {
-        return mapper.mapCarCompanyToDTO(service.saveOrUpdateCarCompany(mapper.mapDTOToCarCompany(carCompanyDTO)));
+        return facade.addCarCompany(carCompanyDTO);
     }
 
     @ApiOperation(value = "Update Car Company Details")
     @PutMapping(value = "update", consumes = APPLICATION_JSON_VALUE)
     public CarCompanyDTO updateCarCompany(@RequestBody CarCompanyDTO carCompanyDTO) {
-        return mapper.mapCarCompanyToDTO(service.saveOrUpdateCarCompany(mapper.mapDTOToCarCompany(carCompanyDTO)));
+        return facade.updateCarCompany(carCompanyDTO);
     }
 
     @ApiOperation(value = "Delete Car Company")
     @DeleteMapping(value = "delete/{carCompanyId}")
     public void deleteHotel(@PathVariable Long carCompanyId) throws CarCompanyNotFoundException {
-        service.deleteCarCompany(carCompanyId);
+        facade.deleteCarCompany(carCompanyId);
     }
 }

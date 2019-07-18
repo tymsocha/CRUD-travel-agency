@@ -37,7 +37,7 @@ public class CarCompanyFacade {
         return mapper.mapCarCompanyToDTO(service.saveOrUpdateCarCompany(mapper.mapDTOToCarCompany(carCompanyDTO)));
     }
 
-    public void deleteCarCompany(Long carCompanyId) throws CarCompanyNotFoundException {
+    public void deleteCarCompany(Long carCompanyId) {
         service.delete(carCompanyId);
     }
 }

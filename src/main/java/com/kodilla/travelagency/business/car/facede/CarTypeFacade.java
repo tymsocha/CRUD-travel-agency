@@ -33,7 +33,7 @@ public class CarTypeFacade {
         return mapper.mapCarTypeToCarTypeDTO(service.saveOrUpdateCarType(mapper.mapCarTypeDTOToCarType(carTypeDTO)));
     }
 
-    public void deleteCarType(Long carTypeId) throws CarTypeNotFoundException {
+    public void deleteCarType(Long carTypeId) {
         service.deleteCarType(carTypeId);
     }
 

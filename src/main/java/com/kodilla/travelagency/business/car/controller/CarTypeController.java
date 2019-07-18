@@ -37,6 +37,7 @@ public class CarTypeController {
         return facade.getCarType(carTypeId);
     }
 
+
     @ApiOperation(value = "Add Car Type to Base")
     @PostMapping(value = "add", consumes = APPLICATION_JSON_VALUE)
     public CarTypeDTO addCarType(@RequestBody CarTypeDTO carTypeDTO) {

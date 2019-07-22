@@ -37,7 +37,6 @@ public class CarTypeController {
         return facade.getCarType(carTypeId);
     }
 
-
     @ApiOperation(value = "Add Car Type to Base")
     @PostMapping(value = "add", consumes = APPLICATION_JSON_VALUE)
     public CarTypeDTO addCarType(@RequestBody CarTypeDTO carTypeDTO) {
@@ -57,7 +56,7 @@ public class CarTypeController {
     }
 
     @ApiOperation(value = "Get All Car Types with AC")
-    @GetMapping(value = "getAll/ac/{withAc}")
+    @GetMapping(value = "getAll/ac/{withAC}")
     public List<CarTypeDTO> getCarTypesWithAC(@PathVariable Boolean withAC) {
         return facade.getCarTypesWithAC(withAC);
     }

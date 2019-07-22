@@ -35,9 +35,9 @@ public class AirlineController {
     }
 
     @ApiOperation(value = "Find Airline By address, phone or name")
-    @GetMapping(value = "get/{parameter}")
-    public AirlineDTO getAirline(@PathVariable String parameter) throws AirlineNotFoundException {
-        return facade.getAirline(parameter);
+    @GetMapping(value = "getParameter/{parameter}")
+    public AirlineDTO getAirlineByParameter(@PathVariable String parameter) throws AirlineNotFoundException {
+        return facade.getAirlineByParameter(parameter);
     }
 
     @ApiOperation(value = "Add Airline to Base")

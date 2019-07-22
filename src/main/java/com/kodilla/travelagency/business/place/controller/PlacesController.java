@@ -5,6 +5,7 @@ import com.kodilla.travelagency.business.place.facede.PlacesFacade;
 import com.kodilla.travelagency.business.place.mapper.PlaceMapper;
 import com.kodilla.travelagency.business.place.service.PlacesService;
 import com.kodilla.travelagency.exceptions.PlaceNotFoundException;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +38,7 @@ public class PlacesController {
     }
 
     @ApiOperation(value = "Get Place By Name")
-    @GetMapping(value = "get/{placeName}")
+    @GetMapping(value = "getName/{placeName}")
     public PlaceDTO getPlaceByName(@PathVariable String placeName) throws PlaceNotFoundException {
         return facade.getPlaceByName(placeName);
     }
@@ -61,32 +62,32 @@ public class PlacesController {
     }
 
     @ApiOperation(value = "Get Places By Country")
-    @GetMapping(value = "get/country")
-    public List<PlaceDTO> getPlacesByCountry(@RequestBody PlaceDTO placeDTO) {
-        return facade.getPlacesByCountry(placeDTO);
+    @GetMapping(value = "getAll/country/{country}")
+    public List<PlaceDTO> getPlacesByCountry(@PathVariable String country) {
+        return facade.getPlacesByCountry(country);
     }
 
     @ApiOperation(value = "Get Places By City")
-    @GetMapping(value = "get/city")
-    public List<PlaceDTO> getPlacesByNearestCity(@RequestBody PlaceDTO placeDTO) {
-        return facade.getPlacesByNearestCity(placeDTO);
+    @GetMapping(value = "get/city/{city}")
+    public List<PlaceDTO> getPlacesByNearestCity(@PathVariable String city) {
+        return facade.getPlacesByNearestCity(city);
     }
 
     @ApiOperation(value = "Get Places By City And Distance")
-    @GetMapping(value = "get/cityAndDistance")
-    public List<PlaceDTO> getPlacesByNearestCityAndDistance(@RequestBody PlaceDTO placeDTO) {
-        return facade.getPlacesByNearestCityAndDistance(placeDTO);
+    @GetMapping(value = "get/city/{city}/dist/{distance}")
+    public List<PlaceDTO> getPlacesByNearestCityAndDistance(@PathVariable String city, @PathVariable Double distance) {
+        return facade.getPlacesByNearestCityAndDistance(city, distance);
     }
 
     @ApiOperation(value = "Get Places By Cost")
-    @GetMapping(value = "get/cost")
-    public List<PlaceDTO> getPlacesByCost(@RequestBody PlaceDTO placeDTO) {
-        return facade.getPlacesByCost(placeDTO);
+    @GetMapping(value = "getCost/{cost}")
+    public List<PlaceDTO> getPlacesByCost(@PathVariable Long cost) {
+        return facade.getPlacesByCost(cost);
     }
 
     @ApiOperation(value = "Get Places By Monument Status")
-    @GetMapping(value = "get/monument")
-    public List<PlaceDTO> getPlacesByMonumentStatus(@RequestBody PlaceDTO placeDTO) {
-        return facade.getPlacesByMonumentStatus(placeDTO);
+    @GetMapping(value = "get/monument/{status}")
+    public List<PlaceDTO> getPlacesByMonumentStatus(@PathVariable Boolean status) {
+        return facade.getPlacesByMonumentStatus(status);
     }
 }

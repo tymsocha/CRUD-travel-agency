@@ -25,7 +25,7 @@ public class CarCompanyFacade {
         return mapper.mapCarCompanyToDTO(service.findCarCompanyById(carCompanyId));
     }
 
-    public CarCompanyDTO getCarCompany(String parameter) throws CarCompanyNotFoundException {
+    public CarCompanyDTO getCarCompanyByName(String parameter) throws CarCompanyNotFoundException {
         return mapper.mapCarCompanyToDTO(service.findCarCompanyByParameter(parameter));
     }
 

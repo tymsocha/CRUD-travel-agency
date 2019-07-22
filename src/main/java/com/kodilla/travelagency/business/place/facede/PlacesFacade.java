@@ -7,6 +7,7 @@ import com.kodilla.travelagency.exceptions.PlaceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Component
@@ -41,27 +42,24 @@ public class PlacesFacade {
         placesService.deletePlace(placeId);
     }
 
-    public List<PlaceDTO> getPlacesByCountry(PlaceDTO placeDTO) {
-        return placeMapper.mapPlaceListToPlaceDTOList(placesService.findPlacesByCountry(placeDTO.getCountry()));
+    public List<PlaceDTO> getPlacesByCountry(String country) {
+        return placeMapper.mapPlaceListToPlaceDTOList(placesService.findPlacesByCountry(country));
     }
 
-    public List<PlaceDTO> getPlacesByNearestCity(PlaceDTO placeDTO) {
-        return placeMapper.mapPlaceListToPlaceDTOList(placesService.findPlacesByNearestCity(placeDTO.getNearestCity()));
+    public List<PlaceDTO> getPlacesByNearestCity(String city) {
+        return placeMapper.mapPlaceListToPlaceDTOList(placesService.findPlacesByNearestCity(city));
     }
 
-    public List<PlaceDTO> getPlacesByNearestCityAndDistance(PlaceDTO placeDTO) {
+    public List<PlaceDTO> getPlacesByNearestCityAndDistance(String city, Double distance) {
         return placeMapper.mapPlaceListToPlaceDTOList(
-                placesService.findPlacesByNearestCityAndDistance(
-                        placeDTO.getNearestCity(), placeDTO.getDistanceFromNearestCity()
-                )
-        );
+                placesService.findPlacesByNearestCityAndDistance(city, distance));
     }
 
-    public List<PlaceDTO> getPlacesByCost(PlaceDTO placeDTO) {
-        return placeMapper.mapPlaceListToPlaceDTOList(placesService.findPlacesByCost(placeDTO.getCostToEnter()));
+    public List<PlaceDTO> getPlacesByCost(Long cost) {
+        return placeMapper.mapPlaceListToPlaceDTOList(placesService.findPlacesByCost(BigDecimal.valueOf(cost)));
     }
 
-    public List<PlaceDTO> getPlacesByMonumentStatus(PlaceDTO placeDTO) {
-        return placeMapper.mapPlaceListToPlaceDTOList(placesService.findPlacesByIsMonument(placeDTO.getIsMonument()));
+    public List<PlaceDTO> getPlacesByMonumentStatus(Boolean status) {
+        return placeMapper.mapPlaceListToPlaceDTOList(placesService.findPlacesByIsMonument(status));
     }
 }

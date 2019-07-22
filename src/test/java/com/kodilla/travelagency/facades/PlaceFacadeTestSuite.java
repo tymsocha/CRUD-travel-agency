@@ -100,13 +100,9 @@ public class PlaceFacadeTestSuite {
         dao.save(place);
         dao.save(place1);
         dao.save(place2);
-        PlaceDTO fr = new PlaceDTO();
-        fr.setCountry("France");
-        PlaceDTO sp = new PlaceDTO();
-        sp.setCountry("Spain");
         //When
-        List<PlaceDTO> places = facade.getPlacesByCountry(fr);
-        List<PlaceDTO> placeList = facade.getPlacesByCountry(sp);
+        List<PlaceDTO> places = facade.getPlacesByCountry("France");
+        List<PlaceDTO> placeList = facade.getPlacesByCountry("Spain");
         //Then
         assertEquals(2, places.size());
         assertEquals(1, placeList.size());
@@ -125,13 +121,9 @@ public class PlaceFacadeTestSuite {
         dao.save(place);
         dao.save(place1);
         dao.save(place2);
-        PlaceDTO fr = new PlaceDTO();
-        fr.setNearestCity("Paris");
-        PlaceDTO sp = new PlaceDTO();
-        sp.setNearestCity("Barcelona");
         //When
-        List<PlaceDTO> places = facade.getPlacesByNearestCity(fr);
-        List<PlaceDTO> placeList = facade.getPlacesByNearestCity(sp);
+        List<PlaceDTO> places = facade.getPlacesByNearestCity("Paris");
+        List<PlaceDTO> placeList = facade.getPlacesByNearestCity("Barcelona");
         //Then
         assertEquals(2, places.size());
         assertEquals(1, placeList.size());
@@ -150,19 +142,10 @@ public class PlaceFacadeTestSuite {
         dao.save(place);
         dao.save(place1);
         dao.save(place2);
-        PlaceDTO fr = new PlaceDTO();
-        fr.setNearestCity("Paris");
-        fr.setDistanceFromNearestCity(26.2);
-        PlaceDTO en = new PlaceDTO();
-        en.setNearestCity("Birmingham");
-        en.setDistanceFromNearestCity(23.0);
-        PlaceDTO wr = new PlaceDTO();
-        wr.setNearestCity("Paris");
-        wr.setDistanceFromNearestCity(2.0);
         //When
-        List<PlaceDTO> places = facade.getPlacesByNearestCityAndDistance(fr);
-        List<PlaceDTO> placeList = facade.getPlacesByNearestCityAndDistance(en);
-        List<PlaceDTO> wrongList = facade.getPlacesByNearestCityAndDistance(wr);
+        List<PlaceDTO> places = facade.getPlacesByNearestCityAndDistance("Paris", 26.2);
+        List<PlaceDTO> placeList = facade.getPlacesByNearestCityAndDistance("Birmingham", 23.0);
+        List<PlaceDTO> wrongList = facade.getPlacesByNearestCityAndDistance("Paris", 2.0);
         //Then
         assertEquals(2, places.size());
         assertEquals(1, placeList.size());
@@ -182,16 +165,10 @@ public class PlaceFacadeTestSuite {
         dao.save(place);
         dao.save(place1);
         dao.save(place2);
-        PlaceDTO fr = new PlaceDTO();
-        fr.setCostToEnter(BigDecimal.valueOf(23));
-        PlaceDTO en = new PlaceDTO();
-        en.setCostToEnter(BigDecimal.valueOf(50));
-        PlaceDTO wr = new PlaceDTO();
-        wr.setCostToEnter(BigDecimal.TEN);
         //When
-        List<PlaceDTO> places = facade.getPlacesByCost(fr);
-        List<PlaceDTO> placeList = facade.getPlacesByCost(en);
-        List<PlaceDTO> wrongList = facade.getPlacesByCost(wr);
+        List<PlaceDTO> places = facade.getPlacesByCost(23L);
+        List<PlaceDTO> placeList = facade.getPlacesByCost(50L);
+        List<PlaceDTO> wrongList = facade.getPlacesByCost(2L);
         //Then
         assertEquals(2, places.size());
         assertEquals(1, placeList.size());
@@ -211,13 +188,9 @@ public class PlaceFacadeTestSuite {
         dao.save(place);
         dao.save(place1);
         dao.save(place2);
-        PlaceDTO isTrue = new PlaceDTO();
-        isTrue.setIsMonument(true);
-        PlaceDTO isFalse = new PlaceDTO();
-        isFalse.setIsMonument(false);
         //When
-        List<PlaceDTO> places = facade.getPlacesByMonumentStatus(isTrue);
-        List<PlaceDTO> placeList = facade.getPlacesByMonumentStatus(isFalse);
+        List<PlaceDTO> places = facade.getPlacesByMonumentStatus(true);
+        List<PlaceDTO> placeList = facade.getPlacesByMonumentStatus(false);
         //Then
         assertEquals(2, places.size());
         assertEquals(1, placeList.size());

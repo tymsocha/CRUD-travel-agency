@@ -37,9 +37,9 @@ public class CarCompanyController {
     }
 
     @ApiOperation(value = "Find Car Company By address, phone or name")
-    @GetMapping(value = "get/{parameter}")
+    @GetMapping(value = "getParameter/{parameter}")
     public CarCompanyDTO getCarCompany(@PathVariable String parameter) throws CarCompanyNotFoundException {
-        return facade.getCarCompany(parameter);
+        return facade.getCarCompanyByName(parameter);
     }
 
     @ApiOperation(value = "Add Car Company to Base")

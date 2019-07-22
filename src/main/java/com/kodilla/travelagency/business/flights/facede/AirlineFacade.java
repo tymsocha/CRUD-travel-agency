@@ -25,7 +25,7 @@ public class AirlineFacade {
         return mapper.mapAirlineToAirlineDTO(service.findAirlineById(airlineId));
     }
 
-    public AirlineDTO getAirline(String parameter) throws AirlineNotFoundException {
+    public AirlineDTO getAirlineByParameter(String parameter) throws AirlineNotFoundException {
         return mapper.mapAirlineToAirlineDTO(service.findAirlineByParameter(parameter));
     }
 
